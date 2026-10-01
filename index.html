@@ -408,6 +408,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
         </ol>
         <h4>How I worked with AI</h4>
         <p>I directed the research synthesis, personas and IA, visual language and tokens, and component behavior and interaction rules. Claude drafted fintech requirements docs, React / TypeScript and CSS scaffolding, and generated and QA'd the library sections, which let five verticals iterate in days instead of months. Every deliverable went through a headless render-and-check pass before it shipped.</p>
+        <p><b>Where I overrode it.</b> The first render of the FX trading screen looked plausible but didn't hold up to a trader's eye: visual elements were misaligned, the column-customization controls in the upper right didn't work, and the RFQ buttons did nothing. The root problem was that Claude treated RFQ as one generic flow. I walked it through how the request-for-quote workflow differs by asset type, had it rebuild against those workflows, and re-checked every control before moving on. AI got me to a first draft fast; domain knowledge decided what was actually correct.</p>
         <h4>Outcome</h4>
         <div class="case-stats">
           <div><b>75</b><span>Live, documented components</span></div>
@@ -419,7 +420,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
           <a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_61c9e0502dc1474db7c9682257324343.pdf" target="_blank" rel="noopener">Overview (PDF) ↗</a>
           <a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_affdfdd970404a51b85aac7a9cf626ad.pdf" target="_blank" rel="noopener">Design library (PDF) ↗</a>
         </div>
-        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>One specific place you overrode Claude: what it proposed, what you decided instead, and why. Interviewers will ask.</li><li>Once the live component library is shared publicly, send me the URL and it will replace the Design library PDF link.</li><li>Do you want the audit numbers in (88 sections, token counts, 1,100+ contrast failures fixed to 0)? Only if you can explain how each was measured.</li></ul></div>
+        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Once the live component library is shared publicly, send me the URL and it will replace the Design library PDF link.</li><li>Do you want the audit numbers in (88 sections, token counts, 1,100+ contrast failures fixed to 0)? Only if you can explain how each was measured.</li></ul></div>
       </div>
       <div class="media">
         <figure><div class="shot"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
