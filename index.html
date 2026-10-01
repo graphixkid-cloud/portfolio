@@ -284,21 +284,21 @@ section.block{padding-block:clamp(64px,9vw,112px)}
         <h4>Key decisions</h4>
         <ol class="decisions">
           <li><b>Put both markets on one screen.</b> Blue price cards carry EBS Market spot; green cards carry EBS Direct bilateral liquidity. Traders read both sources side by side without switching applications.</li>
-          <li><b>Lay out the screen by the trader's scan path.</b> High-density pricing grids, depth ladders and order entry are placed for peripheral reading, and an iceberg-order model lets traders express large orders without leaving the grid.</li>
-          <li><b>Turn multi-leg tickets into one action.</b> Forward and swap tickets that took a phone call or chat thread became single-click actions and hotkeys.</li>
-          <li><b>Build the safety rails into the ticket.</b> Real-time credit checks, pre-populated deal templates and strict tolerance bounds replaced manual ticket entry, cutting fat-finger errors on multi-million-dollar notionals.</li>
+          <li><b>Lay out the screen by the trader's scan path.</b> High-density pricing grids, depth ladders and order entry are placed for peripheral reading, so a trader can watch several pairs while acting on one.</li>
+          <li><b>Redesign iceberg orders for speed.</b> Traders slice, hide and execute large-block spot orders through high-density tiles and hotkeys instead of a multi-step modal. This workflow drove a 30% acceleration in Spot FX on $100B average trading volume.</li>
+          <li><b>Turn multi-leg tickets into one action.</b> Forward and swap quotes that took a phone call or chat thread and a multi-field ticket became single-click responses and custom hotkeys.</li>
+          <li><b>Build the safety rails into the ticket.</b> Automated pre-trade credit checks, pre-populated deal templates and strict tolerance bounds replaced manual entry, removing the source of fat-finger errors on multi-million-dollar notionals.</li>
         </ol>
         <h4>How we validated it</h4>
         <p>On-floor usability sessions with active institutional bank traders, FX desk heads and liquidity providers in London and New York. We tested the pricing grids, depth ladders and hotkey execution flows against split-second trading under heavy volatility.</p>
         <h4>Outcome</h4>
         <div class="case-stats">
           <div><b>$41B</b><span>ADV, EBS Direct FX Forwards</span></div>
-          <div><b>5×</b><span>Best Broker for Spot FX, consecutive years</span></div>
-          <div><b>30%</b><span>Acceleration in Spot FX trading</span></div>
+          <div><b>10,000</b><span>Active institutional users</span></div>
+          <div><b>30%</b><span>Spot FX acceleration from the iceberg redesign</span></div>
         </div>
-        <p class="outcome">Major market-making banks adopted the screen quickly. Bilateral quotes went out faster than they did over phone and chat, and manual ticket errors dropped as credit checks and templates took over.</p>
+        <p class="outcome">The platform quickly reached 10,000 active institutional users across tier-1 market-making banks and liquidity providers. Single-click quotes and hotkeys replaced phone and chat negotiation, automated credit checks removed manual ticket errors, and EBS won "Best Broker for Spot FX" five years in a row.</p>
         <div class="links"><a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_43f14a1d9ad14f43bbb79065313a0543.pdf" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
-        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Any numbers behind "faster quotes" and "fewer errors" (e.g. seconds per ticket, error rate before/after) or the number of banks onboarded? One figure would make this much stronger.</li><li>Is the 30% Spot FX acceleration still a claim you're comfortable attributing to this work?</li></ul></div>
       </div>
       <div class="media">
         <figure><div class="shot"><img src="assets/img/ebs-after.webp" alt="Redesigned HTML5 trading screen with blue EBS Market spot price cards and green EBS Direct bilateral price cards" width="1545" height="1018" loading="lazy"></div><figcaption>After · EBS Market spot (blue) and EBS Direct forwards (green) on one screen</figcaption></figure>
