@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rick Hollandsworth — Principal Product Designer</title>
-<meta name="description" content="Principal Product Designer with 20+ years in high-stakes products: FX trading interfaces at EBS BrokerTec and Verizon's connected-family apps and wearables. Led 30+ designers at Verizon.">
+<meta name="description" content="Principal Product Designer with 20+ years in high-stakes products: FX trading interfaces at EBS BrokerTec and Verizon's connected-family apps and wearables. Led a 30-person design organization at Verizon.">
 <link rel="canonical" href="https://rickhollandsworth.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rickhollandsworth.com/">
@@ -113,6 +113,11 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 .decisions li::before{content:counter(d);position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 .8rem/20px var(--font-display);text-align:center}
 .decisions b{font-weight:600}
 .outcome{margin-top:4px;font-size:var(--step-0)}
+.case-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:4px 0 14px}
+.case-stats div{background:var(--surface);border-radius:4px;padding:14px 14px 12px}
+.case-stats b{display:block;font:700 1.6rem/1.1 var(--font-display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.case-stats span{display:block;margin-top:6px;font-size:.85rem;line-height:1.35;color:var(--ink-2)}
+@media (max-width:480px){.case-stats{grid-template-columns:minmax(0,1fr)}}
 .links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px}
 .links a{font:600 .88rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
 .media{display:grid;gap:16px;align-content:start}
@@ -198,14 +203,14 @@ section.block{padding-block:clamp(64px,9vw,112px)}
   <div class="wrap">
     <p class="label">Principal Product Designer · 20+ years · Remote</p>
     <h1 id="hero-title">Trading floors to family wrists.</h1>
-    <p class="lede">I design high-stakes products for the people who depend on them: <strong>FX trading screens at EBS BrokerTec</strong> handling $41B a day, and <strong>Verizon's connected-family apps and wearables</strong>, where every product serves two people at once. Most recently I led 30+ designers across Verizon's consumer portfolio.</p>
+    <p class="lede">I design high-stakes products for the people who depend on them: <strong>FX trading screens at EBS BrokerTec</strong> handling $41B a day, and <strong>Verizon's connected-family apps and wearables</strong>, where every product serves two people at once. Most recently I led a 30-person design organization across Verizon's consumer portfolio.</p>
     <div class="hero-actions">
       <a class="btn btn-light" href="#work">See the work</a>
       <a class="btn btn-ghost" href="#contact">Get in touch</a>
     </div>
     <div class="stats" role="list">
       <div class="stat" role="listitem"><b>20M</b><span>Subscribers reached</span><small>Verizon consumer portfolio</small></div>
-      <div class="stat" role="listitem"><b>30+</b><span>Designers led</span><small>Verizon Family &amp; Protect</small></div>
+      <div class="stat" role="listitem"><b>30</b><span>Person design org led</span><small>Verizon Family · 5 product squads</small></div>
       <div class="stat" role="listitem"><b>$41B</b><span>Daily trades</span><small>EBS FX trading interface</small></div>
       <div class="stat" role="listitem"><b>5×</b><span>Best Broker, Spot FX</span><small>EBS BrokerTec, consecutive years</small></div>
     </div>
@@ -236,23 +241,28 @@ section.block{padding-block:clamp(64px,9vw,112px)}
       <div>
         <span class="case-num">01 · Verizon</span>
         <h3>Verizon Family</h3>
-        <p class="thesis">One household, many ages: a safety platform built around people instead of devices.</p>
+        <p class="thesis">Merging several legacy apps into one family safety app, and turning around how customers felt about it.</p>
         <dl class="meta">
-          <dt>My role</dt><dd>Principal Experience Designer. Led the Family design team: design direction, hiring and onboarding, and the sprint process with Product and Technology.</dd>
-          <dt>Scale</dt><dd>1.2M subscribers, 43.9% growth in two years</dd>
+          <dt>My role</dt><dd>Led a 30-person cross-functional design organization across five autonomous product squads: 8 full-time designers, 8 contractors and 14 agency partners from Publicis Sapient.</dd>
+          <dt>Scale</dt><dd>950K+ subscriptions</dd>
         </dl>
         <h4>The problem</h4>
-        <p>Families were stitching together location, screen-time and messaging tools from separate apps. No app gave the household a shared picture, and none grew with a child from first phone to teenager.</p>
+        <p>Families were stitching together location, screen-time and messaging tools from separate Verizon apps. Each app carried years of accumulated settings, nothing gave the household a shared picture, and sentiment showed it: combined NPS sat at −17.</p>
         <h4>Key decisions</h4>
         <ol class="decisions">
+          <li><b>Cut legacy features instead of porting them.</b> Product managers and squad leads pushed hard for 1:1 feature parity to keep power users happy. I held the line on strict deprecation and backed it with rapid qualitative testing, which showed leadership that legacy setting clutter was the main source of user confusion and negative reviews. We sunset the low-value controls and simplified the core information architecture.</li>
           <li><b>Organize around family profiles, not devices.</b> Location, place alerts, safety check-ins, group communication and driving insights all hang off a person, so the app still makes sense when a child changes phones or gets a watch.</li>
-          <li><b>Set feature depth by age and role.</b> Each capability surfaces at the depth that fits the member: tight controls for a young child, lighter-touch check-ins and driving insights for a teen.</li>
-          <li><b>Bring design in earlier.</b> I moved design involvement ahead of requirements and added more frequent touchpoints with Product and Technology, so designers shaped the problem instead of styling a finished spec.</li>
+          <li><b>Set feature depth by age and role.</b> Each capability surfaces at the depth that fits the member: tight controls for a young child, lighter check-ins and driving insights for a teen.</li>
         </ol>
         <h4>Outcome</h4>
-        <p class="outcome">An architecture that grows with a family instead of being replaced, and a subscriber base that grew 43.9% over two years to 1.2 million.</p>
+        <div class="case-stats">
+          <div><b>−17 → +2</b><span>Combined NPS (+7 on iOS)</span></div>
+          <div><b>4.4–4.8★</b><span>App store ratings</span></div>
+          <div><b>−2.47%</b><span>Net churn</span></div>
+        </div>
+        <p class="outcome">Simpler onboarding and a cleaner daily experience drove the recovery. New account activations outpaced cancellations, so net churn turned negative across 950K+ subscriptions.</p>
         <div class="links"><a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_ef47e91ff3444d33b5ca65368557435e.pdf" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
-        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Team size and structure you led on Family (designers, contractors, agency).</li><li>One metric design can claim: setup completion, retention, app rating, support contacts.</li><li>One decision you made that the team pushed back on, and how it played out.</li></ul></div>
+        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Subscriber count: the old site said 1.2M subscribers and 43.9% growth; you've now given 950K+ subscriptions. I've used 950K+ only. Which is current, and are they measuring different things?</li><li>Timeframe for the NPS change (e.g. over 12 months, or launch to launch).</li></ul></div>
       </div>
       <div class="media">
         <figure><div class="shot"><img src="assets/img/family.webp" alt="Verizon Family app screens: profiles, safe walk alerts, live map, family line calling and real-time tracking" width="1918" height="738" loading="lazy"></div><figcaption>Profiles · Safe walk · Live map · Family calling</figcaption></figure>
@@ -383,14 +393,14 @@ section.block{padding-block:clamp(64px,9vw,112px)}
       <img src="assets/img/rick.webp" alt="Rick Hollandsworth" width="450" height="450" loading="lazy">
       <div class="bio">
         <p>I'm a Principal Product Designer with more than 20 years in telecom and financial services. My work sits where mistakes are expensive: a trader acting on a price, or a parent trusting a watch on their child's wrist.</p>
-        <p>At Verizon I led design for the Family and Protect portfolios and grew a team of 30+ designers, working across a consumer portfolio that reached more than 20 million subscribers, including 5G Home Internet, Verizon Cloud, Verizon Family, Verizon Protect and the Gizmo and Care Smart wearables. Before that I spent five years at EBS BrokerTec designing FX trading interfaces, and earlier designed for JPMorgan Chase Private Bank, Citigroup, KPMG and BNY Mellon.</p>
+        <p>At Verizon I led a 30-person cross-functional design organization across five product squads on Verizon Family, working across a consumer portfolio that reached more than 20 million subscribers, including 5G Home Internet, Verizon Cloud, Verizon Family, Verizon Protect and the Gizmo and Care Smart wearables. Before that I spent five years at EBS BrokerTec designing FX trading interfaces, and earlier designed for JPMorgan Chase Private Bank, Citigroup, KPMG and BNY Mellon.</p>
         <p>I lead by giving designers ownership of hard problems, pushing for testing with real users, and getting design into the room before requirements are set. Today I use AI tools (Claude, Gemini, NotebookLM, Figma Make) for research synthesis and fast interactive prototyping.</p>
         <div class="facts">
           <div><h3>Focus</h3><p>Complex financial interfaces, multi-user consumer ecosystems, design systems, design leadership</p></div>
           <div><h3>Education</h3><p>Pratt Institute, BFA (Honors), Computer Graphics &amp; Interactivity</p></div>
           <div><h3>Certifications</h3><p>Google AI Professional Certificate · ACI Dealing Simulation</p></div>
         </div>
-        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>"Led design for the Family and Protect portfolios and grew a team of 30+ designers": is that accurate? Was it 30 designers, or a 30-person cross-functional group? Were they your direct reports?</li><li>Do you want to be positioned as a hands-on Principal (IC) or a design manager? The copy should say one clearly.</li></ul></div>
+        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Do you want to be positioned as a hands-on Principal (IC) or a design manager? The copy should say one clearly.</li></ul></div>
       </div>
     </div>
   </div>
