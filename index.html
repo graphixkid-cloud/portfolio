@@ -391,26 +391,35 @@ section.block{padding-block:clamp(64px,9vw,112px)}
       <div>
         <span class="case-num">05 · Self-directed, 2026</span>
         <h3>FinFront UI SDK</h3>
-        <p class="thesis">A trading and private-markets design system, built solo with AI tools to test how fast one designer can go from research to working components.</p>
+        <p class="thesis">One designer, five financial verticals, 75 components, and no room for drift between the docs and the product. Built Claude-first.</p>
         <dl class="meta">
-          <dt>My role</dt><dd>Sole designer and product lead, using Claude and Google's AI tools for research synthesis and component scaffolding</dd>
-          <dt>Scope</dt><dd>75 components · 4 sector architectures · 3 device targets</dd>
+          <dt>My role</dt><dd>Sole designer and product lead: research, IA, visual language, tokens, component behavior and documentation</dd>
+          <dt>Scope</dt><dd>75 components · 5 verticals (FX/Prop, RIA, CRE &amp; Alts, Commodities, Core) · 17 user roles · 3 device targets</dd>
+          <dt>Note</dt><dd>A self-directed prototype for portfolio demonstration, not a licensed product. All data is synthetic.</dd>
         </dl>
         <h4>The problem</h4>
-        <p>Trading platforms rebuild the same order books, blotters and dashboards from scratch, and generic React renderers stall at 100+ price ticks per second. Private markets have it worse: cap rates, target IRR and GP/LP waterfalls have almost no designed patterns at all.</p>
+        <p>A trading terminal, an advisor workspace and a GP capital-raise desk all need to agree on color, numbers and what a severity flag means, without becoming the same app in five costumes. Meanwhile, trading platforms keep rebuilding the same order books and blotters, and private markets (cap rates, target IRR, GP/LP waterfalls) have almost no designed patterns at all.</p>
         <h4>Key decisions</h4>
         <ol class="decisions">
-          <li><b>Start from sectors, not components.</b> I mapped four sector architectures (FX/Prop, RIA, CRE &amp; Alts, Commodities) with personas first, then derived the components each one needs.</li>
-          <li><b>Mirror Figma and React one to one.</b> Every component exists in both with the same names, props and tokens, so design and code can't drift.</li>
-          <li><b>Build accessibility into the tokens.</b> The token system meets WCAG AA contrast in every theme, including the dense dark trading views.</li>
+          <li><b>Make the library the source of truth, not a record of it.</b> Every token, class and component is extracted from the five working prototypes' production CSS, so documentation can't drift from what it documents. Tokens follow a three-tier model (primitive, semantic, component), generated from JSON.</li>
+          <li><b>Share foundations, scope the components.</b> All verticals inherit one token layer, but each scopes its own component classes under a platform wrapper, so RIA's severity chip never collides with CRE's. A sixth vertical follows the rule instead of inventing a new one.</li>
+          <li><b>Keep two color systems apart on purpose.</b> One severity ladder (critical to low) runs across Prop Desk, RIA and Commodities. CRE &amp; Alts gets its own capital-lifecycle colors (uncalled, invested, distributed), because forcing it onto the severity ladder would make two unrelated ideas compete for the same color. I logged that as a decision rather than quietly overloading a token.</li>
+          <li><b>Document live, not static.</b> Every component in the library is interactive. Switching theme, density or colorblind-safe mode restyles every demo across all five verticals at once, because the library runs on the same CSS custom properties as the prototypes.</li>
         </ol>
+        <h4>How I worked with AI</h4>
+        <p>I directed the research synthesis, personas and IA, visual language and tokens, and component behavior and interaction rules. Claude drafted fintech requirements docs, React / TypeScript and CSS scaffolding, and generated and QA'd the library sections, which let five verticals iterate in days instead of months. Every deliverable went through a headless render-and-check pass before it shipped.</p>
         <h4>Outcome</h4>
-        <p class="outcome">A 75-component headless React 19 / TypeScript library, documented Storybook-style with live demos, code, props and behavior notes.</p>
+        <div class="case-stats">
+          <div><b>75</b><span>Live, documented components</span></div>
+          <div><b>5</b><span>Working sector prototypes</span></div>
+          <div><b>17</b><span>User roles designed for</span></div>
+        </div>
+        <p class="outcome">A headless React 19 / TypeScript library and design system with live demos, code, props and behavior notes, plus five working sector prototypes built on one token foundation.</p>
         <div class="links">
           <a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_61c9e0502dc1474db7c9682257324343.pdf" target="_blank" rel="noopener">Overview (PDF) ↗</a>
           <a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_affdfdd970404a51b85aac7a9cf626ad.pdf" target="_blank" rel="noopener">Design library (PDF) ↗</a>
         </div>
-        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Add two or three sentences on what the AI did and what you decided or overrode. Interviewers will ask.</li><li>Is there a live demo or Storybook URL? A working link beats a PDF here.</li></ul></div>
+        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>One specific place you overrode Claude: what it proposed, what you decided instead, and why. Interviewers will ask.</li><li>Once the live component library is shared publicly, send me the URL and it will replace the Design library PDF link.</li><li>Do you want the audit numbers in (88 sections, token counts, 1,100+ contrast failures fixed to 0)? Only if you can explain how each was measured.</li></ul></div>
       </div>
       <div class="media">
         <figure><div class="shot"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
