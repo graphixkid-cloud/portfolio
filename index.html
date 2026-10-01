@@ -124,6 +124,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 .media figure{margin:0}
 .media figcaption{margin-top:8px;text-align:center;text-wrap:balance;font:500 .78rem/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
 .shot{background:var(--surface);border-radius:6px;overflow:hidden}
+.shot.shot-bare{background:transparent;border-radius:0}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .quad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .quad .shot{background:transparent}
@@ -424,7 +425,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
       </div>
       <div class="media">
         <figure><div class="shot"><video poster="assets/img/finfront-fx-terminal-poster.webp" width="1200" height="700" autoplay muted loop playsinline aria-label="FinFront FX Terminal: multi-pair spot and forwards trading screen updating live"><source src="assets/video/finfront-fx-terminal.webm" type="video/webm"><source src="assets/video/finfront-fx-terminal.mp4" type="video/mp4"></video></div></figure>
-        <figure><div class="shot"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
+        <figure><div class="shot shot-bare"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
         <figure><div class="shot"><video poster="assets/img/finfront-library-poster.webp" width="592" height="376" autoplay muted loop playsinline preload="metadata" aria-label="FinFront design library: switching from light to dark theme and scrolling through typography, buttons, toggles, KPI tiles, meters, modals and the AI assistant panel"><source src="assets/video/finfront-library.webm" type="video/webm"><source src="assets/video/finfront-library.mp4" type="video/mp4"></video></div><figcaption>Design library · Light and dark themes from one token set</figcaption></figure>
       </div>
     </article>
