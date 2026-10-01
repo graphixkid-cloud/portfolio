@@ -203,7 +203,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
   <div class="wrap">
     <p class="label">Principal Product Designer · 20+ years · Remote</p>
     <h1 id="hero-title">Trading floors to family wrists.</h1>
-    <p class="lede">I design high-stakes products for the people who depend on them: <strong>FX trading screens at EBS BrokerTec</strong> handling $41B a day, and <strong>Verizon's connected-family apps and wearables</strong>, where every product serves two people at once. Most recently I led a 30-person design organization across Verizon's consumer portfolio.</p>
+    <p class="lede">I design high-stakes products for the people who depend on them: <strong>FX trading screens at EBS BrokerTec</strong>, including EBS Direct FX Forwards at $41B a day, and <strong>Verizon's connected-family apps and wearables</strong>, where every product serves two people at once. Most recently I led a 30-person design organization across Verizon's consumer portfolio.</p>
     <div class="hero-actions">
       <a class="btn btn-light" href="#work">See the work</a>
       <a class="btn btn-ghost" href="#contact">Get in touch</a>
@@ -211,7 +211,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
     <div class="stats" role="list">
       <div class="stat" role="listitem"><b>20M</b><span>Subscribers reached</span><small>Verizon consumer portfolio</small></div>
       <div class="stat" role="listitem"><b>30</b><span>Person design org led</span><small>Verizon Family · 5 product squads</small></div>
-      <div class="stat" role="listitem"><b>$41B</b><span>Daily trades</span><small>EBS FX trading interface</small></div>
+      <div class="stat" role="listitem"><b>$41B</b><span>Daily volume, FX Forwards</span><small>EBS Direct trading screen</small></div>
       <div class="stat" role="listitem"><b>5×</b><span>Best Broker, Spot FX</span><small>EBS BrokerTec, consecutive years</small></div>
     </div>
   </div>
@@ -273,27 +273,35 @@ section.block{padding-block:clamp(64px,9vw,112px)}
     <article class="case" id="ebs">
       <div>
         <span class="case-num">02 · EBS BrokerTec (now CME Group)</span>
-        <h3>One trading screen instead of three</h3>
-        <p class="thesis">Replacing three legacy front ends with one HTML5 screen built around how traders actually read prices.</p>
+        <h3>One screen for spot and forwards</h3>
+        <p class="thesis">An HTML5 trading screen that brought EBS Market spot and the new EBS Direct FX Forwards into one place, validated on the trading floor.</p>
         <dl class="meta">
           <dt>My role</dt><dd>Senior User Experience Designer, 2012–2017. Embedded with trading product and platform engineering; designed the new HTML5 trading front end.</dd>
-          <dt>Scale</dt><dd>$41B in daily trades on a platform averaging $100B a day</dd>
+          <dt>Scale</dt><dd>$41B average daily volume in EBS Direct FX Forwards, alongside EBS Market spot at $100B+ a day</dd>
         </dl>
         <h4>The problem</h4>
-        <p>Traders worked across a native Windows C++ app, an Adobe Flex app and early HTML: three interaction models and three visual languages for one high-stakes task repeated thousands of times a day.</p>
+        <p>EBS was expanding beyond its central limit order book for spot into bilateral liquidity with EBS Direct, a new platform for FX Forwards (outrights and currency swaps). Forwards still ran largely on phone and chat, and traders were already split across a native Windows C++ app, an Adobe Flex app and early HTML: three interaction models for one high-stakes task repeated thousands of times a day.</p>
         <h4>Key decisions</h4>
         <ol class="decisions">
-          <li><b>Lay out the screen by the trader's scan path.</b> Price panels, depth and order entry are placed for peripheral reading, so a trader can watch several pairs while acting on one.</li>
-          <li><b>Keep large orders inside the grid.</b> An iceberg-order model let traders express large orders without leaving the price grid or opening a separate ticket.</li>
-          <li><b>Validate with the people on the desk.</b> Interactive prototypes went in front of traders before build, so the design held up under real trading speed.</li>
+          <li><b>Put both markets on one screen.</b> Blue price cards carry EBS Market spot; green cards carry EBS Direct bilateral liquidity. Traders read both sources side by side without switching applications.</li>
+          <li><b>Lay out the screen by the trader's scan path.</b> High-density pricing grids, depth ladders and order entry are placed for peripheral reading, and an iceberg-order model lets traders express large orders without leaving the grid.</li>
+          <li><b>Turn multi-leg tickets into one action.</b> Forward and swap tickets that took a phone call or chat thread became single-click actions and hotkeys.</li>
+          <li><b>Build the safety rails into the ticket.</b> Real-time credit checks, pre-populated deal templates and strict tolerance bounds replaced manual ticket entry, cutting fat-finger errors on multi-million-dollar notionals.</li>
         </ol>
+        <h4>How we validated it</h4>
+        <p>On-floor usability sessions with active institutional bank traders, FX desk heads and liquidity providers in London and New York. We tested the pricing grids, depth ladders and hotkey execution flows against split-second trading under heavy volatility.</p>
         <h4>Outcome</h4>
-        <p class="outcome">The new interface processed $41B in daily trades, supported a 30% acceleration in Spot FX trading, and EBS won "Best Broker for Spot FX" five years in a row.</p>
+        <div class="case-stats">
+          <div><b>$41B</b><span>ADV, EBS Direct FX Forwards</span></div>
+          <div><b>5×</b><span>Best Broker for Spot FX, consecutive years</span></div>
+          <div><b>30%</b><span>Acceleration in Spot FX trading</span></div>
+        </div>
+        <p class="outcome">Major market-making banks adopted the screen quickly. Bilateral quotes went out faster than they did over phone and chat, and manual ticket errors dropped as credit checks and templates took over.</p>
         <div class="links"><a href="https://dbf02f2a-eec1-4921-8faf-9a35df1ec2b8.usrfiles.com/ugd/dbf02f_43f14a1d9ad14f43bbb79065313a0543.pdf" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
-        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Spot vs. forwards: was the $41B screen FX forwards, EBS Direct (bilateral), or both? Use one term everywhere.</li><li>Was "validated with traders" true for this screen (it is stated for Watch EBS)?</li><li>Any measured change: order-entry time, error rate, adoption of the new screen.</li></ul></div>
+        <div class="draft-note"><b>Rick to confirm before launch</b><ul><li>Any numbers behind "faster quotes" and "fewer errors" (e.g. seconds per ticket, error rate before/after) or the number of banks onboarded? One figure would make this much stronger.</li><li>Is the 30% Spot FX acceleration still a claim you're comfortable attributing to this work?</li></ul></div>
       </div>
       <div class="media">
-        <figure><div class="shot"><img src="assets/img/ebs-after.webp" alt="Redesigned HTML5 trading screen" width="1545" height="1018" loading="lazy"></div><figcaption>After · HTML5 trading screen</figcaption></figure>
+        <figure><div class="shot"><img src="assets/img/ebs-after.webp" alt="Redesigned HTML5 trading screen with blue EBS Market spot price cards and green EBS Direct bilateral price cards" width="1545" height="1018" loading="lazy"></div><figcaption>After · EBS Market spot (blue) and EBS Direct forwards (green) on one screen</figcaption></figure>
         <div class="pair">
           <figure><div class="shot"><img src="assets/img/ebs-before-cpp.webp" alt="Legacy native Windows C++ trading application" width="800" height="600" loading="lazy"></div><figcaption>Before · Windows C++</figcaption></figure>
           <figure><div class="shot"><img src="assets/img/ebs-before-flex.webp" alt="Legacy Adobe Flex trading application" width="622" height="465" loading="lazy"></div><figcaption>Before · Adobe Flex</figcaption></figure>
