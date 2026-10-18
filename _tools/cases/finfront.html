@@ -1,0 +1,56 @@
+    <article class="case" id="finfront">
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">05 · Self-directed, 2026</span>
+          <h3>FinFront UI SDK</h3>
+          <p class="thesis">One designer, five financial verticals, 75 components, and no room for drift between the docs and the product. Built Claude-first.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><video poster="assets/img/finfront-fx-terminal-poster.webp" width="1200" height="700" autoplay muted loop playsinline aria-label="FinFront FX Terminal: multi-pair spot and forwards trading screen updating live"><source src="assets/video/finfront-fx-terminal.webm" type="video/webm"><source src="assets/video/finfront-fx-terminal.mp4" type="video/mp4"></video></div></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Sole designer and product lead: research, IA, visual language, tokens, component behavior and documentation</dd></div>
+        <div><dt>Scope</dt><dd>75 components · 5 verticals (FX/Prop, RIA, CRE &amp; Alts, Commodities, Core) · 17 user roles · 3 device targets</dd></div>
+        <div><dt>Note</dt><dd>A self-directed prototype for portfolio demonstration, not a licensed product. All data is synthetic.</dd></div>
+      </dl>
+      <section class="case-block">
+        <h4>The problem</h4>
+        <p>A trading terminal, an advisor workspace and a GP capital-raise desk all need to agree on color, numbers and what a severity flag means, without becoming the same app in five costumes. Meanwhile, trading platforms keep rebuilding the same order books and blotters, and private markets (cap rates, target IRR, GP/LP waterfalls) have almost no designed patterns at all.</p>
+      </section>
+      <section class="case-block">
+        <h4>Key decisions</h4>
+        <ol class="decisions" style="--cols:4">
+          <li><b>Make the library the source of truth, not a record of it.</b> Every token, class and component is extracted from the five working prototypes' production CSS, so documentation can't drift from what it documents. Tokens follow a three-tier model (primitive, semantic, component), generated from JSON.</li>
+          <li><b>Share foundations, scope the components.</b> All verticals inherit one token layer, but each scopes its own component classes under a platform wrapper, so RIA's severity chip never collides with CRE's. A sixth vertical follows the rule instead of inventing a new one.</li>
+          <li><b>Keep two color systems apart on purpose.</b> One severity ladder (critical to low) runs across Prop Desk, RIA and Commodities. CRE &amp; Alts gets its own capital-lifecycle colors (uncalled, invested, distributed), because forcing it onto the severity ladder would make two unrelated ideas compete for the same color. I logged that as a decision rather than quietly overloading a token.</li>
+          <li><b>Document live, not static.</b> Every component in the library is interactive. Switching theme, density or colorblind-safe mode restyles every demo across all five verticals at once, because the library runs on the same CSS custom properties as the prototypes.</li>
+        </ol>
+      </section>
+      <section class="case-block">
+        <h4>How I worked with AI</h4>
+        <p>I directed the research synthesis, personas and IA, visual language and tokens, and component behavior and interaction rules. Claude drafted fintech requirements docs, React / TypeScript and CSS scaffolding, and generated and QA'd the library sections, which let five verticals iterate in days instead of months. Every deliverable went through a headless render-and-check pass before it shipped.</p>
+        <p><b>Where I overrode it.</b> The first render of the FX trading screen looked plausible but didn't hold up to a trader's eye: visual elements were misaligned, the column-customization controls in the upper right didn't work, and the RFQ buttons did nothing. The root problem was that Claude treated RFQ as one generic flow. I walked it through how the request-for-quote workflow differs by asset type, had it rebuild against those workflows, and re-checked every control before moving on. AI got me to a first draft fast; domain knowledge decided what was actually correct.</p>
+      </section>
+      <div class="case-strip media">
+        <figure><div class="shot shot-bare"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
+        <figure><div class="shot"><video poster="assets/img/finfront-library-poster.webp" width="592" height="376" autoplay muted loop playsinline preload="metadata" aria-label="FinFront design library: switching from light to dark theme and scrolling through typography, buttons, toggles, KPI tiles, meters, modals and the AI assistant panel"><source src="assets/video/finfront-library.webm" type="video/webm"><source src="assets/video/finfront-library.mp4" type="video/mp4"></video></div><figcaption>Design library · Light and dark themes from one token set</figcaption></figure>
+      </div>
+      <section class="case-block case-outcome">
+        <h4>Outcome</h4>
+        <div class="case-stats">
+          <div><b>75</b><span>Live, documented components</span></div>
+          <div><b>5</b><span>Working sector prototypes</span></div>
+          <div><b>17</b><span>User roles designed for</span></div>
+        </div>
+        <p class="outcome">A headless React 19 / TypeScript library and design system with live demos, code, props and behavior notes, plus five working sector prototypes built on one token foundation.</p>
+      </section>
+      <div class="case-links">
+        <div class="links">
+          <a href="assets/pdf/finfront-overview.pdf" data-goatcounter-click="pdf-finfront-overview" data-goatcounter-title="FinFront overview PDF" target="_blank" rel="noopener">Overview (PDF) ↗</a>
+          <a href="assets/pdf/finfront-design-library-case-study.pdf" data-goatcounter-click="pdf-finfront-design-library" data-goatcounter-title="FinFront design library PDF" target="_blank" rel="noopener">Design library (PDF) ↗</a>
+          <a href="assets/pdf/finfront-ai-assistant-case-study.pdf" data-goatcounter-click="pdf-finfront-ai-assistant" data-goatcounter-title="FinFront AI assistant PDF" target="_blank" rel="noopener">AI assistant (PDF) ↗</a>
+        </div>
+        <p class="link-note">Live component library walkthrough available in interviews.</p>
+      </div>
+    </article>

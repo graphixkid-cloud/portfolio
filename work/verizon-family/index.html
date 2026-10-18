@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verizon Family app redesign · UX case study · Rick Hollandsworth</title>
+<meta name="description" content="How Rick Hollandsworth led a 30-person design organization to consolidate five Verizon family apps into one, turning NPS around by 20 points in a year.">
+<meta name="author" content="Rick Hollandsworth">
+<link rel="canonical" href="https://rickhollandsworth.com/work/verizon-family/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rickhollandsworth.com/work/verizon-family/">
+<meta property="og:title" content="Verizon Family app redesign · UX case study · Rick Hollandsworth">
+<meta property="og:description" content="How Rick Hollandsworth led a 30-person design organization to consolidate five Verizon family apps into one, turning NPS around by 20 points in a year.">
+<meta property="og:image" content="https://rickhollandsworth.com/assets/img/og-verizon-family.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Rick Hollandsworth">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Verizon Family app redesign · UX case study · Rick Hollandsworth">
+<meta name="twitter:description" content="How Rick Hollandsworth led a 30-person design organization to consolidate five Verizon family apps into one, turning NPS around by 20 points in a year.">
+<meta name="twitter:image" content="https://rickhollandsworth.com/assets/img/og-verizon-family.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://rickhollandsworth.com/work/verizon-family/#case-study",
+   "headline": "Verizon Family app redesign · UX case study",
+   "name": "Verizon Family",
+   "description": "How Rick Hollandsworth led a 30-person design organization to consolidate five Verizon family apps into one, turning NPS around by 20 points in a year.",
+   "url": "https://rickhollandsworth.com/work/verizon-family/",
+   "image": "https://rickhollandsworth.com/assets/img/og-verizon-family.jpg",
+   "inLanguage": "en",
+   "author": {
+    "@type": "Person",
+    "@id": "https://rickhollandsworth.com/#rick",
+    "name": "Rick Hollandsworth",
+    "url": "https://rickhollandsworth.com/"
+   },
+   "isPartOf": {
+    "@type": "WebSite",
+    "name": "Rick Hollandsworth",
+    "url": "https://rickhollandsworth.com/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Work",
+     "item": "https://rickhollandsworth.com/#work"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Verizon Family",
+     "item": "https://rickhollandsworth.com/work/verizon-family/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<link rel="icon" type="image/png" href="../../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one editorial column (max 1180px). Dark hero, light body, case studies as numbered chapters with text left / artifacts right. */
+:root{
+  --bg:#f2f2f3; --surface:#e8e9eb; --ink:#1d1f20; --ink-2:#4a4e53; --rule:rgba(29,31,32,.14);
+  --accent:#3f6488; --accent-strong:#2f4e6d; --night:#101418; --night-ink:#eef1f4; --night-ink-2:#b4bec9;
+  --draft-bg:#fff6dc; --draft-ink:#6b4e00; --draft-rule:#e3c56b;
+  --font-display:"Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body:"Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --step--1:.875rem; --step-0:1.0625rem; --step-1:1.25rem; --step-2:1.6rem; --step-3:2.25rem; --step-4:clamp(2.6rem,6vw,4.6rem);
+  --gutter:clamp(16px,4vw,48px); --max:1180px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--step-0)/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;height:auto;display:block}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.label{font:600 .78rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 12px;z-index:100}
+.skip:focus{left:8px}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(242,242,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
+.brand img{width:40px;height:40px;border-radius:50%}
+.brand b{display:block;font:600 1.05rem/1.1 var(--font-display);letter-spacing:.08em;text-transform:uppercase}
+.brand span{display:block;font:500 .78rem/1.2 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{font:500 .9rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nav a:hover{color:var(--accent)}
+.nav .cta{background:var(--accent);color:#fff;padding:12px 18px;border-radius:4px}
+.nav .cta:hover{background:var(--accent-strong);color:#fff}
+.menu-btn{display:none;background:none;border:1px solid var(--rule);border-radius:4px;padding:9px 12px;font:600 .85rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);cursor:pointer}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--rule);padding:8px var(--gutter) 20px}
+  .nav.open{display:flex}
+  .nav a{padding:14px 0;border-bottom:1px solid var(--rule);font-size:1rem}
+  .nav .cta{margin-top:14px;text-align:center;border:0}
+  .brand span{letter-spacing:.06em}
+}
+
+/* Hero */
+.hero{position:relative;background:var(--night) url("assets/img/hero.webp") center right/cover no-repeat;color:var(--night-ink)}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,20,24,.96) 0%,rgba(16,20,24,.86) 45%,rgba(16,20,24,.55) 100%)}
+.hero .wrap{position:relative;padding-block:clamp(56px,9vw,112px) clamp(40px,6vw,72px)}
+.hero .label{color:#9fbbd6}
+.hero h1{font-size:var(--step-4);font-weight:700;margin-top:18px;max-width:14ch}
+.hero .lede{margin-top:24px;max-width:60ch;font-size:var(--step-1);line-height:1.55;color:var(--night-ink-2)}
+.hero .lede strong{color:var(--night-ink);font-weight:500}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-block;font:600 .9rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 22px;border-radius:4px}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-ghost{border:1px solid rgba(238,241,244,.5);color:var(--night-ink)}
+.btn-light:hover{background:#dfe6ee}.btn-ghost:hover{border-color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(40px,6vw,64px);border-top:1px solid rgba(238,241,244,.18)}
+.stat{padding:22px 20px 4px 0}
+.stat+.stat{padding-left:20px;border-left:1px solid rgba(238,241,244,.18)}
+.stat b{display:block;font:700 clamp(2rem,3.6vw,2.8rem)/1 var(--font-display);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;font:600 .8rem/1.3 var(--font-display);letter-spacing:.12em;text-transform:uppercase}
+.stat small{display:block;margin-top:4px;font-size:.85rem;color:var(--night-ink-2)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(3){padding-left:0;border-left:0}.stat{padding-bottom:18px}}
+
+/* Clients */
+.clients{border-bottom:1px solid var(--rule)}
+.clients .wrap{display:flex;align-items:center;flex-wrap:wrap;gap:20px 44px;padding-block:28px}
+.clients .label{color:var(--ink-2);margin-right:8px}
+.clients img{height:28px;width:auto;filter:grayscale(1);opacity:.75}
+
+/* Sections */
+section.block{padding-block:clamp(64px,9vw,112px)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--rule);margin-bottom:clamp(40px,6vw,64px)}
+.section-head h2{font-size:var(--step-3)}
+
+/* Case studies */
+.case{display:grid;gap:clamp(32px,4vw,48px);padding-bottom:clamp(56px,8vw,96px);margin-bottom:clamp(56px,8vw,96px);border-bottom:1px solid var(--rule)}
+.case:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.case-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center}
+.case-num{font:700 .9rem/1 var(--font-display);letter-spacing:.14em;color:var(--ink-2)}
+.case h3{font-size:clamp(2rem,3.6vw,2.9rem);margin-top:10px}
+.case .thesis{margin-top:14px;font:500 var(--step-1)/1.4 var(--font-display);letter-spacing:.01em;color:var(--ink-2)}
+.case-hero .shot{position:relative;aspect-ratio:16/9}
+.case-hero .shot img,.case-hero .shot video{position:absolute;inset:clamp(12px,2vw,24px);width:calc(100% - 2*clamp(12px,2vw,24px));height:calc(100% - 2*clamp(12px,2vw,24px));object-fit:contain;border-radius:3px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px clamp(24px,3vw,40px);margin:0;padding-top:28px;border-top:1px solid var(--rule);font-size:.95rem}
+.meta dt{font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.meta dd{margin:0;line-height:1.5}
+.case-block{padding-top:28px;border-top:1px solid var(--rule)}
+.case-block>p,.case-block>.outcome{max-width:72ch}
+.case h4{margin:0 0 12px;font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.case p+p{margin-top:12px}
+.decisions{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:16px;counter-reset:d}
+.decisions li{background:var(--surface);border-radius:6px;padding:22px 22px 24px;counter-increment:d;font-size:.95rem;line-height:1.55;color:var(--ink-2)}
+.decisions li::before{content:counter(d);display:block;width:26px;height:26px;margin-bottom:14px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 .85rem/24px var(--font-display);text-align:center}
+.decisions b{display:block;margin-bottom:8px;font-weight:600;font-size:1.05rem;line-height:1.3;color:var(--ink)}
+.outcome{margin-top:4px;font-size:var(--step-0)}
+.case-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:4px 0 16px}
+.case-stats div{background:var(--surface);border-radius:4px;padding:14px 14px 12px}
+.case-stats b{display:block;font:700 1.6rem/1.1 var(--font-display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.case-stats span{display:block;margin-top:6px;font-size:.85rem;line-height:1.35;color:var(--ink-2)}
+@media (max-width:480px){.case-stats{grid-template-columns:minmax(0,1fr)}}
+.case-strip{display:grid;gap:24px;justify-items:center}
+.case-strip>*{width:100%;max-width:880px}
+.case-strip img,.case-strip video{display:block;width:100%;height:auto}
+.links{display:flex;flex-wrap:wrap;gap:10px 22px}
+.link-note{margin-top:12px;font-size:.93rem;color:var(--ink-2)}
+.links a{font:600 .88rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+.media figure{margin:0}
+.media figcaption{margin-top:8px;text-align:center;text-wrap:balance;font:500 .78rem/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.shot{background:var(--surface);border-radius:6px;overflow:hidden}
+.shot.shot-bare{background:transparent;border-radius:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.quad .shot{background:transparent}
+@media (max-width:1100px){.decisions{grid-template-columns:repeat(min(var(--cols,3),2),minmax(0,1fr))}}
+@media (max-width:900px){.case-intro{grid-template-columns:minmax(0,1fr)}.case-hero{order:-1}}
+@media (max-width:640px){.decisions{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.quad{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Case cards (home) and case-study pages */
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-strong)}
+.case-card .case-summary .case-stats{margin:22px 0 24px}
+.case-card h3 a{color:inherit;text-decoration:none}.case-card h3 a:hover{color:var(--accent)}
+.case-card .case-hero a{display:block;text-decoration:none;color:inherit}
+.case h1.case-title{font-size:clamp(2.2rem,4.4vw,3.4rem);margin-top:10px}
+.case h2.kicker{margin:0 0 12px;font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.case-page{padding-top:clamp(32px,5vw,56px)}
+.crumbs{margin:0 0 clamp(20px,3vw,32px);font:600 .85rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase}
+.crumbs a{text-decoration:none}
+.case-page .case{border-bottom:0;margin-bottom:0}
+.case-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:28px;border-top:1px solid var(--rule)}
+.case-nav a{display:block;padding:18px 20px;background:var(--surface);border-radius:6px;text-decoration:none;color:var(--ink)}
+.case-nav a:hover{background:#dfe2e6}
+.case-nav span{display:block;font:600 .75rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.case-nav b{display:block;margin-top:6px;font:600 1.25rem/1.2 var(--font-display)}
+.case-nav-next{text-align:right}
+@media (max-width:640px){.case-nav{grid-template-columns:1fr}.case-nav-next{text-align:left}}
+
+/* Review notes: delete every .draft-note before launch */
+.draft-note{margin-top:22px;padding:14px 16px;background:var(--draft-bg);color:var(--draft-ink);border:1px dashed var(--draft-rule);border-radius:4px;font-size:.9rem;line-height:1.5}
+.draft-note b{display:block;font:700 .75rem/1.4 var(--font-display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.draft-note ul{margin:4px 0 0;padding-left:18px}
+
+/* Earlier work */
+.earlier{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;padding-top:28px;margin-top:clamp(56px,8vw,96px);border-top:1px solid var(--rule)}
+.earlier ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.earlier li b{display:block;font:600 1.05rem/1.25 var(--font-display);letter-spacing:.02em}
+.earlier li span{font-size:.93rem;color:var(--ink-2)}
+@media (max-width:760px){.earlier,.earlier ul{grid-template-columns:minmax(0,1fr)}}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(28px,5vw,64px)}
+.about img{border-radius:6px;width:100%;max-width:320px}
+.about .bio p{max-width:64ch}
+.about .bio p+p{margin-top:16px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:36px;padding-top:24px;border-top:1px solid var(--rule)}
+.facts h3{font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.facts p{font-size:.95rem;color:var(--ink-2)}
+@media (max-width:760px){.about,.facts{grid-template-columns:minmax(0,1fr)}}
+
+/* Recommendations */
+.recs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.rec{margin:0;background:var(--surface);border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:20px}
+.rec blockquote{margin:0;font-size:1.02rem;line-height:1.6}
+.rec footer{display:flex;align-items:center;gap:12px;margin-top:auto}
+.rec footer img{width:44px;height:44px;border-radius:50%}
+.rec cite{font-style:normal;font-size:.9rem;color:var(--ink-2)}
+.rec cite b{display:block;color:var(--ink);font-weight:600}
+.rec blockquote p+p{margin-top:10px}
+.rec cite span{display:block;color:var(--ink-2)}
+.rec cite small{display:block;margin-top:2px;font-size:.8rem;color:var(--ink-2)}
+.rec cite a{color:var(--ink);text-decoration:none}.rec cite a:hover{color:var(--accent);text-decoration:underline}
+.recs-expand{margin-top:20px}
+.recs-expand summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font:600 .9rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding:14px 20px;border:1px solid var(--accent);border-radius:4px}
+.recs-expand summary::-webkit-details-marker{display:none}
+.recs-expand summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.recs-expand[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+.recs-expand summary:hover{background:var(--accent);color:#fff}
+.recs-expand .less{display:none}.recs-expand[open] .less{display:inline}.recs-expand[open] .more{display:none}
+.recs-expand[open] > .recs{margin-top:20px}
+@media (max-width:760px){.recs{grid-template-columns:minmax(0,1fr)}}
+.recs-more{margin-top:20px;font-size:.95rem;color:var(--ink-2)}
+
+/* Contact */
+.contact{background:var(--night);color:var(--night-ink)}
+.contact h2{font-size:var(--step-4);font-weight:700}
+.contact .sub{margin-top:14px;color:var(--night-ink-2);max-width:56ch}
+.contact dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:44px 0 0;padding-top:24px;border-top:1px solid rgba(238,241,244,.18)}
+.contact dt{font:600 .78rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:#9fbbd6}
+.contact dd{margin:8px 0 0;font-size:1.02rem;overflow-wrap:anywhere}
+.contact a{color:var(--night-ink)}
+@media (max-width:860px){.contact dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.contact dl{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:440px){.brand b{font-size:.95rem;letter-spacing:.05em}.brand>span>span{display:none}}
+.site-footer{background:var(--night);color:var(--night-ink-2);font-size:.85rem;border-top:1px solid rgba(238,241,244,.12)}
+.site-footer .wrap{padding-block:22px}
+</style>
+</head>
+<body>
+<a class="skip" href="#case">Skip to case study</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../" aria-label="Rick Hollandsworth, back to top">
+      <img src="../../assets/img/rick.webp" alt="" width="40" height="40">
+      <span><b>Rick Hollandsworth</b><span>Principal Product Designer</span></span>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="../../#work">Work</a>
+      <a href="../../#about">About</a>
+      <a href="../../#recommendations">Recommendations</a>
+      <a href="../../assets/pdf/rick-hollandsworth-resume.pdf" data-goatcounter-click="pdf-resume" data-goatcounter-title="Résumé PDF" target="_blank" rel="noopener">Résumé</a>
+      <a class="cta" href="../../#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="block case-page" aria-label="Verizon Family case study">
+  <div class="wrap" id="case">
+    <p class="crumbs"><a href="../../#work">← All work</a></p>
+    <article class="case" id="verizon-family">
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">01 · Verizon</span>
+          <h1 class="case-title">Verizon Family</h1>
+          <p class="thesis">Consolidating five legacy family products into one app, and turning NPS around by 20 points in a year.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><img src="../../assets/img/family.webp" alt="Verizon Family app screens: profiles, safe walk alerts, live map, family line calling and real-time tracking" width="1918" height="738" loading="lazy"></div><figcaption>Profiles · Safe walk · Live map · Family calling</figcaption></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Led a 30-person cross-functional design organization across five autonomous product squads: 8 full-time designers, 8 contractors and 14 agency partners from Publicis Sapient.</dd></div>
+        <div><dt>Scale</dt><dd>950K+ paying subscriptions; about 1.2M users migrating from five legacy products</dd></div>
+        <div><dt>Timeline</dt><dd>3-month redesign sprint; unified app launched H2 2024</dd></div>
+      </dl>
+      <section class="case-block">
+        <h2 class="kicker">The problem</h2>
+        <p>Verizon's family products were spread across five separate apps: Smart Family, GizmoHub, Care Smart, Hum and Roadside. Each carried years of accumulated settings, nothing gave the household a shared picture, and third-party vendor latency slowed everything down. Sentiment showed it: Smart Family NPS hovered between −22 and −26, with Android as low as −31.</p>
+      </section>
+      <section class="case-block">
+        <h2 class="kicker">Key decisions</h2>
+        <ol class="decisions" style="--cols:3">
+          <li><b>Cut legacy features instead of porting them.</b> Product managers and squad leads pushed hard for 1:1 feature parity to keep power users happy. I held the line on strict deprecation and backed it with rapid qualitative testing, which showed leadership that legacy setting clutter was the main source of user confusion and negative reviews. We sunset the low-value controls and simplified the core information architecture.</li>
+          <li><b>Organize around family profiles, not devices.</b> Location, place alerts, safety check-ins, group communication and driving insights all hang off a person, so the app still makes sense when a child changes phones or gets a watch.</li>
+          <li><b>Set feature depth by age and role.</b> Each capability surfaces at the depth that fits the member: tight controls for a young child, lighter check-ins and driving insights for a teen.</li>
+        </ol>
+      </section>
+      <section class="case-block case-outcome">
+        <h2 class="kicker">Outcome</h2>
+        <div class="case-stats">
+          <div><b>+20 pts</b><span>NPS swing in 12 months, to −1 to +2</span></div>
+          <div><b>4.4–4.8★</b><span>App store ratings</span></div>
+          <div><b>−2.47%</b><span>Net churn</span></div>
+        </div>
+        <p class="outcome">Measured launch to launch over 12 months, overall NPS rose about 20 points to between −1 and +2, and iOS NPS climbed from −18 to as high as +10. Simpler onboarding and a cleaner daily experience drove the recovery, and new activations outpaced cancellations, so net churn turned negative across 950K+ subscriptions.</p>
+      </section>
+      <div class="case-links">
+        <div class="links"><a href="../../assets/pdf/verizon-family-case-study.pdf" data-goatcounter-click="pdf-verizon-family" data-goatcounter-title="Verizon Family case study PDF" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
+        <p class="link-note">Password required. It's in my application materials, or ask me for it by <a href="mailto:rick.hollandsworth@outlook.com?subject=Case%20study%20password%20request" data-goatcounter-click="password-request-email" data-goatcounter-title="Password request: email">email</a> or <a href="https://www.linkedin.com/in/rickhollandsworth/" target="_blank" rel="noopener" data-goatcounter-click="password-request-linkedin" data-goatcounter-title="Password request: LinkedIn">LinkedIn message</a>.</p>
+      </div>
+    </article>
+    <nav class="case-nav" aria-label="More case studies">
+  <a class="case-nav-prev" href="../../#work"><span>Back to</span><b>All work</b></a>
+  <a class="case-nav-next" href="../ebs/"><span>Next case study</span><b>One screen for spot and forwards</b></a>
+</nav>
+  </div>
+</section>
+
+<section class="block contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title">Let's talk.</h2>
+    <p class="sub">Open to Staff, Principal and Lead product design roles. Available to travel for meetings and events as needed.</p>
+    <dl>
+      <div><dt>Email</dt><dd><a href="mailto:rick.hollandsworth@outlook.com" data-goatcounter-click="contact-email" data-goatcounter-title="Email link">rick.hollandsworth@outlook.com</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+12014045031" data-goatcounter-click="contact-phone" data-goatcounter-title="Phone link">+1 (201) 404-5031</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/rickhollandsworth/" data-goatcounter-click="contact-linkedin" data-goatcounter-title="LinkedIn profile link" target="_blank" rel="noopener">rickhollandsworth ↗</a></dd></div>
+      <div><dt>Résumé</dt><dd><a href="../../assets/pdf/rick-hollandsworth-resume.pdf" data-goatcounter-click="pdf-resume" data-goatcounter-title="Résumé PDF" target="_blank" rel="noopener">Download PDF ↗</a></dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer"><div class="wrap">© 2026 Rick Hollandsworth</div></footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menu-btn'),nav=document.getElementById('site-nav');
+  if(!btn||!nav)return;
+  function set(open){nav.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'Close':'Menu';}
+  btn.addEventListener('click',function(){set(!nav.classList.contains('open'));});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
+<!-- analytics -->
+<script>
+  // Count visits only on the live site, not local files or previews.
+  if (!/(^|\.)rickhollandsworth\.com$/.test(window.location.hostname)) window.goatcounter = {no_onload: true};
+</script>
+<script data-goatcounter="https://rickh.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<!-- /analytics -->
+</body>
+</html>
