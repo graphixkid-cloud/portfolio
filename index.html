@@ -27,7 +27,7 @@
  "@type": "ProfilePage",
  "url": "https://rickhollandsworth.com/",
  "name": "Rick Hollandsworth — Principal / Staff Product Designer",
- "dateModified": "2026-10-16T09:00:00-05:00",
+ "dateModified": "2026-10-17T09:00:00-05:00",
  "mainEntity": {
   "@type": "Person",
   "@id": "https://rickhollandsworth.com/#rick",
@@ -170,30 +170,37 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 .section-head h2{font-size:var(--step-3)}
 
 /* Case studies */
-.case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,64px);padding-bottom:clamp(56px,8vw,96px);margin-bottom:clamp(56px,8vw,96px);border-bottom:1px solid var(--rule)}
+.case{display:grid;gap:clamp(32px,4vw,48px);padding-bottom:clamp(56px,8vw,96px);margin-bottom:clamp(56px,8vw,96px);border-bottom:1px solid var(--rule)}
 .case:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.case-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center}
 .case-num{font:700 .9rem/1 var(--font-display);letter-spacing:.14em;color:var(--ink-2)}
 .case h3{font-size:clamp(2rem,3.6vw,2.9rem);margin-top:10px}
 .case .thesis{margin-top:14px;font:500 var(--step-1)/1.4 var(--font-display);letter-spacing:.01em;color:var(--ink-2)}
-.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin-top:22px;padding:16px 0;border-block:1px solid var(--rule);font-size:.95rem}
-.meta dt{font:600 .78rem/1.6 var(--font-display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
-.meta dd{margin:0}
-.case h4{margin:26px 0 8px;font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.case-hero .shot{position:relative;aspect-ratio:16/9}
+.case-hero .shot img,.case-hero .shot video{position:absolute;inset:clamp(12px,2vw,24px);width:calc(100% - 2*clamp(12px,2vw,24px));height:calc(100% - 2*clamp(12px,2vw,24px));object-fit:contain;border-radius:3px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px clamp(24px,3vw,40px);margin:0;padding-top:28px;border-top:1px solid var(--rule);font-size:.95rem}
+.meta dt{font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.meta dd{margin:0;line-height:1.5}
+.case-block{padding-top:28px;border-top:1px solid var(--rule)}
+.case-block>p,.case-block>.outcome{max-width:72ch}
+.case h4{margin:0 0 12px;font:600 .8rem/1.3 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .case p+p{margin-top:12px}
-.decisions{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:d}
-.decisions li{position:relative;padding-left:34px;counter-increment:d}
-.decisions li::before{content:counter(d);position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 .8rem/20px var(--font-display);text-align:center}
-.decisions b{font-weight:600}
+.decisions{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:16px;counter-reset:d}
+.decisions li{background:var(--surface);border-radius:6px;padding:22px 22px 24px;counter-increment:d;font-size:.95rem;line-height:1.55;color:var(--ink-2)}
+.decisions li::before{content:counter(d);display:block;width:26px;height:26px;margin-bottom:14px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 .85rem/24px var(--font-display);text-align:center}
+.decisions b{display:block;margin-bottom:8px;font-weight:600;font-size:1.05rem;line-height:1.3;color:var(--ink)}
 .outcome{margin-top:4px;font-size:var(--step-0)}
-.case-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:4px 0 14px}
+.case-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:4px 0 16px}
 .case-stats div{background:var(--surface);border-radius:4px;padding:14px 14px 12px}
 .case-stats b{display:block;font:700 1.6rem/1.1 var(--font-display);font-variant-numeric:tabular-nums;white-space:nowrap}
 .case-stats span{display:block;margin-top:6px;font-size:.85rem;line-height:1.35;color:var(--ink-2)}
 @media (max-width:480px){.case-stats{grid-template-columns:minmax(0,1fr)}}
-.links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px}
+.case-strip{display:grid;gap:24px;justify-items:center}
+.case-strip>*{width:100%;max-width:880px}
+.case-strip img,.case-strip video{display:block;width:100%;height:auto}
+.links{display:flex;flex-wrap:wrap;gap:10px 22px}
 .link-note{margin-top:12px;font-size:.93rem;color:var(--ink-2)}
 .links a{font:600 .88rem/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
-.media{display:grid;gap:16px;align-content:start}
 .media figure{margin:0}
 .media figcaption{margin-top:8px;text-align:center;text-wrap:balance;font:500 .78rem/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
 .shot{background:var(--surface);border-radius:6px;overflow:hidden}
@@ -201,7 +208,9 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .quad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .quad .shot{background:transparent}
-@media (max-width:900px){.case{grid-template-columns:minmax(0,1fr)}.case .media{order:-1}}
+@media (max-width:1100px){.decisions{grid-template-columns:repeat(min(var(--cols,3),2),minmax(0,1fr))}}
+@media (max-width:900px){.case-intro{grid-template-columns:minmax(0,1fr)}.case-hero{order:-1}}
+@media (max-width:640px){.decisions{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.quad{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Review notes: delete every .draft-note before launch */
@@ -324,23 +333,34 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 
     <!-- 01 Verizon Family -->
     <article class="case" id="verizon-family">
-      <div>
-        <span class="case-num">01 · Verizon</span>
-        <h3>Verizon Family</h3>
-        <p class="thesis">Consolidating five legacy family products into one app, and turning NPS around by 20 points in a year.</p>
-        <dl class="meta">
-          <dt>My role</dt><dd>Led a 30-person cross-functional design organization across five autonomous product squads: 8 full-time designers, 8 contractors and 14 agency partners from Publicis Sapient.</dd>
-          <dt>Scale</dt><dd>950K+ paying subscriptions; about 1.2M users migrating from five legacy products</dd>
-          <dt>Timeline</dt><dd>3-month redesign sprint; unified app launched H2 2024</dd>
-        </dl>
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">01 · Verizon</span>
+          <h3>Verizon Family</h3>
+          <p class="thesis">Consolidating five legacy family products into one app, and turning NPS around by 20 points in a year.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><img src="assets/img/family.webp" alt="Verizon Family app screens: profiles, safe walk alerts, live map, family line calling and real-time tracking" width="1918" height="738" loading="lazy"></div><figcaption>Profiles · Safe walk · Live map · Family calling</figcaption></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Led a 30-person cross-functional design organization across five autonomous product squads: 8 full-time designers, 8 contractors and 14 agency partners from Publicis Sapient.</dd></div>
+        <div><dt>Scale</dt><dd>950K+ paying subscriptions; about 1.2M users migrating from five legacy products</dd></div>
+        <div><dt>Timeline</dt><dd>3-month redesign sprint; unified app launched H2 2024</dd></div>
+      </dl>
+      <section class="case-block">
         <h4>The problem</h4>
         <p>Verizon's family products were spread across five separate apps: Smart Family, GizmoHub, Care Smart, Hum and Roadside. Each carried years of accumulated settings, nothing gave the household a shared picture, and third-party vendor latency slowed everything down. Sentiment showed it: Smart Family NPS hovered between −22 and −26, with Android as low as −31.</p>
+      </section>
+      <section class="case-block">
         <h4>Key decisions</h4>
-        <ol class="decisions">
+        <ol class="decisions" style="--cols:3">
           <li><b>Cut legacy features instead of porting them.</b> Product managers and squad leads pushed hard for 1:1 feature parity to keep power users happy. I held the line on strict deprecation and backed it with rapid qualitative testing, which showed leadership that legacy setting clutter was the main source of user confusion and negative reviews. We sunset the low-value controls and simplified the core information architecture.</li>
           <li><b>Organize around family profiles, not devices.</b> Location, place alerts, safety check-ins, group communication and driving insights all hang off a person, so the app still makes sense when a child changes phones or gets a watch.</li>
           <li><b>Set feature depth by age and role.</b> Each capability surfaces at the depth that fits the member: tight controls for a young child, lighter check-ins and driving insights for a teen.</li>
         </ol>
+      </section>
+      <section class="case-block case-outcome">
         <h4>Outcome</h4>
         <div class="case-stats">
           <div><b>+20 pts</b><span>NPS swing in 12 months, to −1 to +2</span></div>
@@ -348,36 +368,54 @@ section.block{padding-block:clamp(64px,9vw,112px)}
           <div><b>−2.47%</b><span>Net churn</span></div>
         </div>
         <p class="outcome">Measured launch to launch over 12 months, overall NPS rose about 20 points to between −1 and +2, and iOS NPS climbed from −18 to as high as +10. Simpler onboarding and a cleaner daily experience drove the recovery, and new activations outpaced cancellations, so net churn turned negative across 950K+ subscriptions.</p>
+      </section>
+      <div class="case-links">
         <div class="links"><a href="assets/pdf/verizon-family-case-study.pdf" data-goatcounter-click="pdf-verizon-family" data-goatcounter-title="Verizon Family case study PDF" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
         <p class="link-note">Password required. It's in my application materials, or email me for it.</p>
-      </div>
-      <div class="media">
-        <figure><div class="shot"><img src="assets/img/family.webp" alt="Verizon Family app screens: profiles, safe walk alerts, live map, family line calling and real-time tracking" width="1918" height="738" loading="lazy"></div><figcaption>Profiles · Safe walk · Live map · Family calling</figcaption></figure>
       </div>
     </article>
 
     <!-- 02 EBS -->
     <article class="case" id="ebs">
-      <div>
-        <span class="case-num">02 · EBS BrokerTec (now CME Group)</span>
-        <h3>One screen for spot and forwards</h3>
-        <p class="thesis">An HTML5 trading screen that brought EBS Market spot and the new EBS Direct FX Forwards into one place, validated on the trading floor.</p>
-        <dl class="meta">
-          <dt>My role</dt><dd>Senior User Experience Designer, 2012–2017. Embedded with trading product and platform engineering; designed the new HTML5 trading front end.</dd>
-          <dt>Scale</dt><dd>$41B average daily volume in EBS Direct FX Forwards, alongside EBS Market spot at $100B+ a day</dd>
-        </dl>
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">02 · EBS BrokerTec (now CME Group)</span>
+          <h3>One screen for spot and forwards</h3>
+          <p class="thesis">An HTML5 trading screen that brought EBS Market spot and the new EBS Direct FX Forwards into one place, validated on the trading floor.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><img src="assets/img/ebs-after.webp" alt="Redesigned HTML5 trading screen with blue EBS Market spot price cards and green EBS Direct bilateral price cards" width="1545" height="1018" loading="lazy"></div><figcaption>After · EBS Market spot (blue) and EBS Direct forwards (green) on one screen</figcaption></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Senior User Experience Designer, 2012–2017. Embedded with trading product and platform engineering; designed the new HTML5 trading front end.</dd></div>
+        <div><dt>Scale</dt><dd>$41B average daily volume in EBS Direct FX Forwards, alongside EBS Market spot at $100B+ a day</dd></div>
+      </dl>
+      <section class="case-block">
         <h4>The problem</h4>
         <p>EBS was expanding beyond its central limit order book for spot into bilateral liquidity with EBS Direct, a new platform for FX Forwards (outrights and currency swaps). Forwards still ran largely on phone and chat, and traders were already split across a native Windows C++ app, an Adobe Flex app and early HTML: three interaction models for one high-stakes task repeated thousands of times a day.</p>
+      </section>
+      <section class="case-block">
         <h4>Key decisions</h4>
-        <ol class="decisions">
+        <ol class="decisions" style="--cols:3">
           <li><b>Put both markets on one screen.</b> Blue price cards carry EBS Market spot; green cards carry EBS Direct bilateral liquidity. Traders read both sources side by side without switching applications.</li>
           <li><b>Lay out the screen by the trader's scan path.</b> High-density pricing grids, depth ladders and order entry are placed for peripheral reading, so a trader can watch several pairs while acting on one.</li>
           <li><b>Redesign iceberg orders for speed.</b> Traders slice, hide and execute large-block spot orders through high-density tiles and hotkeys instead of a multi-step modal. This workflow drove a 30% acceleration in Spot FX on $100B average trading volume.</li>
           <li><b>Turn multi-leg tickets into one action.</b> Forward and swap quotes that took a phone call or chat thread and a multi-field ticket became single-click responses and custom hotkeys.</li>
           <li><b>Build the safety rails into the ticket.</b> Automated pre-trade credit checks, pre-populated deal templates and strict tolerance bounds replaced manual entry, removing the source of fat-finger errors on multi-million-dollar notionals.</li>
         </ol>
+      </section>
+      <section class="case-block">
         <h4>How we validated it</h4>
         <p>On-floor usability sessions with active institutional bank traders, FX desk heads and liquidity providers in London and New York. We tested the pricing grids, depth ladders and hotkey execution flows against split-second trading under heavy volatility.</p>
+      </section>
+      <div class="case-strip media">
+        <div class="pair">
+          <figure><div class="shot"><img src="assets/img/ebs-before-cpp.webp" alt="Legacy native Windows C++ trading application" width="800" height="600" loading="lazy"></div><figcaption>Before · Windows C++</figcaption></figure>
+          <figure><div class="shot"><img src="assets/img/ebs-before-flex.webp" alt="Legacy Adobe Flex trading application" width="622" height="465" loading="lazy"></div><figcaption>Before · Adobe Flex</figcaption></figure>
+        </div>
+      </div>
+      <section class="case-block case-outcome">
         <h4>Outcome</h4>
         <div class="case-stats">
           <div><b>$41B</b><span>ADV, EBS Direct FX Forwards</span></div>
@@ -385,35 +423,41 @@ section.block{padding-block:clamp(64px,9vw,112px)}
           <div><b>30%</b><span>Spot FX acceleration from the iceberg redesign</span></div>
         </div>
         <p class="outcome">The platform quickly reached 10,000 active institutional users across tier-1 market-making banks and liquidity providers. Single-click quotes and hotkeys replaced phone and chat negotiation, automated credit checks removed manual ticket errors, and EBS won "Best Broker for Spot FX" five years in a row.</p>
+      </section>
+      <div class="case-links">
         <div class="links"><a href="assets/pdf/ebs-case-study.pdf" data-goatcounter-click="pdf-ebs" data-goatcounter-title="EBS case study PDF" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
-      </div>
-      <div class="media">
-        <figure><div class="shot"><img src="assets/img/ebs-after.webp" alt="Redesigned HTML5 trading screen with blue EBS Market spot price cards and green EBS Direct bilateral price cards" width="1545" height="1018" loading="lazy"></div><figcaption>After · EBS Market spot (blue) and EBS Direct forwards (green) on one screen</figcaption></figure>
-        <div class="pair">
-          <figure><div class="shot"><img src="assets/img/ebs-before-cpp.webp" alt="Legacy native Windows C++ trading application" width="800" height="600" loading="lazy"></div><figcaption>Before · Windows C++</figcaption></figure>
-          <figure><div class="shot"><img src="assets/img/ebs-before-flex.webp" alt="Legacy Adobe Flex trading application" width="622" height="465" loading="lazy"></div><figcaption>Before · Adobe Flex</figcaption></figure>
-        </div>
       </div>
     </article>
 
     <!-- 03 Gizmo Watch -->
     <article class="case" id="gizmo-watch">
-      <div>
-        <span class="case-num">03 · Verizon</span>
-        <h3>Verizon Gizmo Watch</h3>
-        <p class="thesis">A smartwatch worn by a six-year-old and bought, set up and trusted by a parent.</p>
-        <dl class="meta">
-          <dt>My role</dt><dd>Lead / Principal Experience Designer across Gizmo Watch 2, 3 and 4, with my deepest involvement on Gizmo Watch 4: end-to-end UX/UI architecture, hardware-software interaction, on-watch OS navigation and the GizmoHub companion app. Also authored the UX analysis and product roadmap.</dd>
-          <dt>Scale</dt><dd>700K+ active parent accounts managing 2M+ connected family contacts</dd>
-        </dl>
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">03 · Verizon</span>
+          <h3>Verizon Gizmo Watch</h3>
+          <p class="thesis">A smartwatch worn by a six-year-old and bought, set up and trusted by a parent.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><img src="assets/img/gizmo.webp" alt="Gizmo Watch screens: AI assistant, weather, alerts, video calling and texting, water lock and to-do lists" width="1918" height="742" loading="lazy"></div><figcaption>Ask &amp; Learn · Weather · Alerts · Video calling · Water lock · To-do lists</figcaption></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Lead / Principal Experience Designer across Gizmo Watch 2, 3 and 4, with my deepest involvement on Gizmo Watch 4: end-to-end UX/UI architecture, hardware-software interaction, on-watch OS navigation and the GizmoHub companion app. Also authored the UX analysis and product roadmap.</dd></div>
+        <div><dt>Scale</dt><dd>700K+ active parent accounts managing 2M+ connected family contacts</dd></div>
+      </dl>
+      <section class="case-block">
         <h4>The problem</h4>
         <p>The watch is worn by a child but bought, configured and trusted by a parent. Every new feature had to be simple enough for a six-year-old's wrist and clear enough to earn a parent's confidence from the companion app.</p>
+      </section>
+      <section class="case-block">
         <h4>Key decisions</h4>
-        <ol class="decisions">
+        <ol class="decisions" style="--cols:3">
           <li><b>Design every feature as a pair.</b> Each feature (Ask &amp; Learn AI assistant, weather, alerts, video calling and texting, water lock, to-do lists) has an on-watch interaction and a GizmoHub counterpart for the parent, designed together.</li>
           <li><b>Keep the wrist simple and put control with the parent.</b> The watch shows a child only what they need in the moment. Setup, rules and trusted contacts (up to 10–20 per watch, including multiple guardians) live in GizmoHub.</li>
           <li><b>Design for a child who grows.</b> The feature set extends the watch's useful life as children age into it, instead of being outgrown in a year.</li>
         </ol>
+      </section>
+      <section class="case-block case-outcome">
         <h4>Outcome</h4>
         <div class="case-stats">
           <div><b>Forbes</b><span>Best Kids Smartwatch Overall, Gizmo Watch 4 (2026)</span></div>
@@ -421,48 +465,48 @@ section.block{padding-block:clamp(64px,9vw,112px)}
           <div><b>2023</b><span>Red Dot Award, Gizmo Watch 3</span></div>
         </div>
         <p class="outcome"><a href="https://www.forbes.com/sites/forbes-personal-shopper/article/best-kids-smartwatch/" target="_blank" rel="noopener">Forbes Vetted</a> named the Gizmo Watch 4 its Best Kids Smartwatch Overall in 2026 after hands-on family testing. The ecosystem serves 700K+ active parent accounts managing more than 2M connected family contacts. The GizmoWatch won a GOOD DESIGN Award in 2019, and Gizmo Watch 3 and Gizmo Watch 3 Adventure won a Red Dot Award in 2023 for child-oriented UX/UI design and integrated safety features.</p>
+      </section>
+      <div class="case-links">
         <div class="links"><a href="assets/pdf/verizon-gizmo-watch-case-study.pdf" data-goatcounter-click="pdf-gizmo-watch" data-goatcounter-title="Gizmo Watch case study PDF" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
         <p class="link-note">Password required. It's in my application materials, or email me for it.</p>
-      </div>
-      <div class="media">
-        <figure><div class="shot"><img src="assets/img/gizmo.webp" alt="Gizmo Watch screens: AI assistant, weather, alerts, video calling and texting, water lock and to-do lists" width="1918" height="742" loading="lazy"></div><figcaption>Ask &amp; Learn · Weather · Alerts · Video calling · Water lock · To-do lists</figcaption></figure>
       </div>
     </article>
 
     <!-- 04 Care Smart -->
     <article class="case" id="care-smart">
-      <div>
-        <span class="case-num">04 · Verizon</span>
-        <h3>Verizon Care Smart</h3>
-        <p class="thesis">Independence for an older adult and reassurance for their family, without making either feel monitored.</p>
-        <dl class="meta">
-          <dt>My role</dt><dd>Principal Experience Designer for the watch experience and the family companion app.</dd>
-          <dt>Audience</dt><dd>Older adults living independently (the wearer), and the adult children and family who act as caregivers</dd>
-          <dt>Timeline</dt><dd>Launched March 2020; expanded to Apple Watch with 24/7 professional monitoring and fall detection (2021–22) and Samsung Galaxy Watch4+ on Wear OS (Q2 2023)</dd>
-        </dl>
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">04 · Verizon</span>
+          <h3>Verizon Care Smart</h3>
+          <p class="thesis">Independence for an older adult and reassurance for their family, without making either feel monitored.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><img src="assets/img/caresmart-watch.webp" alt="Care Smart on Apple Watch: Get Help, Trust Circle, Profile and Test call" width="867" height="976" loading="lazy"></div><figcaption>On the wrist · Get Help · Trust Circle</figcaption></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Principal Experience Designer for the watch experience and the family companion app.</dd></div>
+        <div><dt>Audience</dt><dd>Older adults living independently (the wearer), and the adult children and family who act as caregivers</dd></div>
+        <div><dt>Timeline</dt><dd>Launched March 2020; expanded to Apple Watch with 24/7 professional monitoring and fall detection (2021–22) and Samsung Galaxy Watch4+ on Wear OS (Q2 2023)</dd></div>
+      </dl>
+      <section class="case-block">
         <h4>The problem</h4>
         <p>An older adult wants independence, not supervision. Their adult child wants reassurance without intruding. One product had to serve both people without making either feel watched, and an emergency feature had to be fast without being easy to trigger by mistake.</p>
+      </section>
+      <section class="case-block">
         <h4>Key decisions</h4>
-        <ol class="decisions">
+        <ol class="decisions" style="--cols:4">
           <li><b>Keep the watch radically simple.</b> High-contrast text, simplified circular touch targets, a small fixed set of trusted contacts and plain language.</li>
           <li><b>Make Get Help intentional.</b> Testing with older adults showed frequent false emergency dispatches from accidental taps on the prominent emergency button. We replaced the single tap with a slider, which eliminated accidental dispatches without slowing access in a real emergency.</li>
           <li><b>Move the complexity to the family app.</b> Configuration, medication reminders, check-in status and remote Medical ID management live with the caregiver, along with low-friction location alerts and fall notifications.</li>
           <li><b>Frame safety as a companion, not a monitor.</b> Fall detection, location and the Trust Circle are presented as support the wearer chooses, with group chat keeping the family connected day to day.</li>
         </ol>
+      </section>
+      <section class="case-block">
         <h4>How we validated it</h4>
         <p>We tested with both sides of the dual-user model: senior wearers, focusing on contrast, touch targets and accidental-trigger prevention, and family caregivers, who needed fast location alerts, fall notifications and remote Medical ID management.</p>
-        <h4>Outcome</h4>
-        <div class="case-stats">
-          <div><b>0</b><span>Accidental emergency dispatches after the slider redesign</span></div>
-          <div><b>3</b><span>Watch platforms: Care Smart, Apple Watch, Galaxy Watch</span></div>
-          <div><b>24/7</b><span>Professional monitoring with fall detection</span></div>
-        </div>
-        <p class="outcome">Care Smart grew from a dedicated senior smartwatch into a service across Apple and Samsung wearables, extending Verizon's wearable portfolio to a new life stage.</p>
-        <div class="links"><a href="assets/pdf/verizon-care-smart-case-study.pdf" data-goatcounter-click="pdf-care-smart" data-goatcounter-title="Care Smart case study PDF" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
-        <p class="link-note">Password required. It's in my application materials, or email me for it.</p>
-      </div>
-      <div class="media">
-        <figure><div class="shot"><img src="assets/img/caresmart-watch.webp" alt="Care Smart on Apple Watch: Get Help, Trust Circle, Profile and Test call" width="867" height="976" loading="lazy"></div><figcaption>On the wrist · Get Help · Trust Circle</figcaption></figure>
+      </section>
+      <div class="case-strip media">
         <figure>
           <div class="quad">
             <div class="shot"><img src="assets/img/caresmart-location.webp" alt="Care Smart companion app: location dashboard" width="547" height="1130" loading="lazy"></div>
@@ -473,31 +517,61 @@ section.block{padding-block:clamp(64px,9vw,112px)}
           <figcaption>Family app · Location · Fall alert · Trust Circle · Group chat</figcaption>
         </figure>
       </div>
+      <section class="case-block case-outcome">
+        <h4>Outcome</h4>
+        <div class="case-stats">
+          <div><b>0</b><span>Accidental emergency dispatches after the slider redesign</span></div>
+          <div><b>3</b><span>Watch platforms: Care Smart, Apple Watch, Galaxy Watch</span></div>
+          <div><b>24/7</b><span>Professional monitoring with fall detection</span></div>
+        </div>
+        <p class="outcome">Care Smart grew from a dedicated senior smartwatch into a service across Apple and Samsung wearables, extending Verizon's wearable portfolio to a new life stage.</p>
+      </section>
+      <div class="case-links">
+        <div class="links"><a href="assets/pdf/verizon-care-smart-case-study.pdf" data-goatcounter-click="pdf-care-smart" data-goatcounter-title="Care Smart case study PDF" target="_blank" rel="noopener">Full case study (PDF) ↗</a></div>
+        <p class="link-note">Password required. It's in my application materials, or email me for it.</p>
+      </div>
     </article>
 
     <!-- 05 FinFront -->
     <article class="case" id="finfront">
-      <div>
-        <span class="case-num">05 · Self-directed, 2026</span>
-        <h3>FinFront UI SDK</h3>
-        <p class="thesis">One designer, five financial verticals, 75 components, and no room for drift between the docs and the product. Built Claude-first.</p>
-        <dl class="meta">
-          <dt>My role</dt><dd>Sole designer and product lead: research, IA, visual language, tokens, component behavior and documentation</dd>
-          <dt>Scope</dt><dd>75 components · 5 verticals (FX/Prop, RIA, CRE &amp; Alts, Commodities, Core) · 17 user roles · 3 device targets</dd>
-          <dt>Note</dt><dd>A self-directed prototype for portfolio demonstration, not a licensed product. All data is synthetic.</dd>
-        </dl>
+      <div class="case-intro">
+        <div class="case-summary">
+          <span class="case-num">05 · Self-directed, 2026</span>
+          <h3>FinFront UI SDK</h3>
+          <p class="thesis">One designer, five financial verticals, 75 components, and no room for drift between the docs and the product. Built Claude-first.</p>
+        </div>
+        <div class="case-hero media">
+          <figure><div class="shot"><video poster="assets/img/finfront-fx-terminal-poster.webp" width="1200" height="700" autoplay muted loop playsinline aria-label="FinFront FX Terminal: multi-pair spot and forwards trading screen updating live"><source src="assets/video/finfront-fx-terminal.webm" type="video/webm"><source src="assets/video/finfront-fx-terminal.mp4" type="video/mp4"></video></div></figure>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Sole designer and product lead: research, IA, visual language, tokens, component behavior and documentation</dd></div>
+        <div><dt>Scope</dt><dd>75 components · 5 verticals (FX/Prop, RIA, CRE &amp; Alts, Commodities, Core) · 17 user roles · 3 device targets</dd></div>
+        <div><dt>Note</dt><dd>A self-directed prototype for portfolio demonstration, not a licensed product. All data is synthetic.</dd></div>
+      </dl>
+      <section class="case-block">
         <h4>The problem</h4>
         <p>A trading terminal, an advisor workspace and a GP capital-raise desk all need to agree on color, numbers and what a severity flag means, without becoming the same app in five costumes. Meanwhile, trading platforms keep rebuilding the same order books and blotters, and private markets (cap rates, target IRR, GP/LP waterfalls) have almost no designed patterns at all.</p>
+      </section>
+      <section class="case-block">
         <h4>Key decisions</h4>
-        <ol class="decisions">
+        <ol class="decisions" style="--cols:4">
           <li><b>Make the library the source of truth, not a record of it.</b> Every token, class and component is extracted from the five working prototypes' production CSS, so documentation can't drift from what it documents. Tokens follow a three-tier model (primitive, semantic, component), generated from JSON.</li>
           <li><b>Share foundations, scope the components.</b> All verticals inherit one token layer, but each scopes its own component classes under a platform wrapper, so RIA's severity chip never collides with CRE's. A sixth vertical follows the rule instead of inventing a new one.</li>
           <li><b>Keep two color systems apart on purpose.</b> One severity ladder (critical to low) runs across Prop Desk, RIA and Commodities. CRE &amp; Alts gets its own capital-lifecycle colors (uncalled, invested, distributed), because forcing it onto the severity ladder would make two unrelated ideas compete for the same color. I logged that as a decision rather than quietly overloading a token.</li>
           <li><b>Document live, not static.</b> Every component in the library is interactive. Switching theme, density or colorblind-safe mode restyles every demo across all five verticals at once, because the library runs on the same CSS custom properties as the prototypes.</li>
         </ol>
+      </section>
+      <section class="case-block">
         <h4>How I worked with AI</h4>
         <p>I directed the research synthesis, personas and IA, visual language and tokens, and component behavior and interaction rules. Claude drafted fintech requirements docs, React / TypeScript and CSS scaffolding, and generated and QA'd the library sections, which let five verticals iterate in days instead of months. Every deliverable went through a headless render-and-check pass before it shipped.</p>
         <p><b>Where I overrode it.</b> The first render of the FX trading screen looked plausible but didn't hold up to a trader's eye: visual elements were misaligned, the column-customization controls in the upper right didn't work, and the RFQ buttons did nothing. The root problem was that Claude treated RFQ as one generic flow. I walked it through how the request-for-quote workflow differs by asset type, had it rebuild against those workflows, and re-checked every control before moving on. AI got me to a first draft fast; domain knowledge decided what was actually correct.</p>
+      </section>
+      <div class="case-strip media">
+        <figure><div class="shot shot-bare"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
+        <figure><div class="shot"><video poster="assets/img/finfront-library-poster.webp" width="592" height="376" autoplay muted loop playsinline preload="metadata" aria-label="FinFront design library: switching from light to dark theme and scrolling through typography, buttons, toggles, KPI tiles, meters, modals and the AI assistant panel"><source src="assets/video/finfront-library.webm" type="video/webm"><source src="assets/video/finfront-library.mp4" type="video/mp4"></video></div><figcaption>Design library · Light and dark themes from one token set</figcaption></figure>
+      </div>
+      <section class="case-block case-outcome">
         <h4>Outcome</h4>
         <div class="case-stats">
           <div><b>75</b><span>Live, documented components</span></div>
@@ -505,17 +579,14 @@ section.block{padding-block:clamp(64px,9vw,112px)}
           <div><b>17</b><span>User roles designed for</span></div>
         </div>
         <p class="outcome">A headless React 19 / TypeScript library and design system with live demos, code, props and behavior notes, plus five working sector prototypes built on one token foundation.</p>
+      </section>
+      <div class="case-links">
         <div class="links">
           <a href="assets/pdf/finfront-overview.pdf" data-goatcounter-click="pdf-finfront-overview" data-goatcounter-title="FinFront overview PDF" target="_blank" rel="noopener">Overview (PDF) ↗</a>
           <a href="assets/pdf/finfront-design-library-case-study.pdf" data-goatcounter-click="pdf-finfront-design-library" data-goatcounter-title="FinFront design library PDF" target="_blank" rel="noopener">Design library (PDF) ↗</a>
           <a href="assets/pdf/finfront-ai-assistant-case-study.pdf" data-goatcounter-click="pdf-finfront-ai-assistant" data-goatcounter-title="FinFront AI assistant PDF" target="_blank" rel="noopener">AI assistant (PDF) ↗</a>
         </div>
         <p class="link-note">Live component library walkthrough available in interviews.</p>
-      </div>
-      <div class="media">
-        <figure><div class="shot"><video poster="assets/img/finfront-fx-terminal-poster.webp" width="1200" height="700" autoplay muted loop playsinline aria-label="FinFront FX Terminal: multi-pair spot and forwards trading screen updating live"><source src="assets/video/finfront-fx-terminal.webm" type="video/webm"><source src="assets/video/finfront-fx-terminal.mp4" type="video/mp4"></video></div></figure>
-        <figure><div class="shot shot-bare"><img src="assets/img/finfront-lineup.webp" alt="FinFront SDK product lineup across desktop, tablet and mobile trading screens" width="2400" height="555" loading="lazy"></div><figcaption>One system across desktop, tablet and mobile</figcaption></figure>
-        <figure><div class="shot"><video poster="assets/img/finfront-library-poster.webp" width="592" height="376" autoplay muted loop playsinline preload="metadata" aria-label="FinFront design library: switching from light to dark theme and scrolling through typography, buttons, toggles, KPI tiles, meters, modals and the AI assistant panel"><source src="assets/video/finfront-library.webm" type="video/webm"><source src="assets/video/finfront-library.mp4" type="video/mp4"></video></div><figcaption>Design library · Light and dark themes from one token set</figcaption></figure>
       </div>
     </article>
 
