@@ -3,3 +3,8 @@
 _source-video/
 _build/
 _originals/
+__pycache__/
+.pytest_cache/
+node_modules/
+.wrangler/
+.dev.vars

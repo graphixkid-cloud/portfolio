@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-assistant",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker behind the Portfolio Assistant chat on rickhollandsworth.com",
+  "scripts": {
+    "test": "vitest run",
+    "deploy": "wrangler deploy",
+    "eval": "node evals/run.mjs"
+  },
+  "devDependencies": {
+    "vitest": "3.2.7",
+    "wrangler": "4.151.3"
+  }
+}

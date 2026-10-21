@@ -1,0 +1,57 @@
+Rick Hollandsworth — Résumé (plain text, maintained by hand from assets/pdf/rick-hollandsworth-resume.pdf)
+Headline: Principal Product Designer | User-Centered Design | AI-assisted design
+Location: Springfield, Missouri
+
+Summary
+Principal Product Designer with 15+ years of expertise driving end-to-end user journeys and high-level UX strategy for a $1.25 billion consumer product portfolio reaching 20 million subscribers. A proven leader proficient in user-centric design and rigorous Agile execution, partnering with executive leadership and cross-functional teams to bridge complex user needs with core business goals.
+
+Key career achievements
+- Consumer product scale (Verizon): directed UX strategy for a $1.25B consumer portfolio (including 5G Home Internet, Cloud, Family, Protect, Gizmo), reaching over 20M subscribers.
+- FinTech innovation (EBS BrokerTec): architected award-winning trading interfaces that processed $100B+ in daily trades and accelerated Spot FX volume by 30%.
+- Asset and revenue growth (Bank of New York / Pershing): led design for flagship brokerage platforms generating $330M annually and managing $30B in assets.
+- Global consolidation (JPMorgan Chase): unified legacy systems into a turnkey single sign-on platform for bankers managing $25M+ accounts, elevating global rankings.
+
+Experience
+
+Verizon — July 2017 to August 2026 — Basking Ridge, NJ
+Titles: Principal Experience Designer (May 2021 – Aug 2026); Lead Experience Designer (Oct 2018 – May 2021); UX Design Lead (Jul 2017 – Oct 2018)
+- Team leadership and scaling: hired and managed a design organization of nearly 30 designers and managers (full-time employees, contractors and agency partners) across the Verizon product ecosystem.
+- Managed high-impact portfolios: influenced design strategy for Verizon Cloud ($1B revenue, 5.74M users) and 5G Home Internet ($514M revenue).
+- Specialized solutions: delivered user-centric ecosystems for the Gizmo Watch (700K children and 2.4M parents) and the Verizon Family suite ($220M revenue).
+- Security engagement: drove adoption for Verizon Protect ($17.7M revenue) and integrated security dashboards to build user trust.
+- AI-driven design: uses AI tools (Gemini, NotebookLM, Figma Make) for user research, market research and data analysis, design concepts and rapid interactive prototyping.
+
+EBS BrokerTec (now CME Group) — March 2012 to March 2017 — Parsippany, NJ
+Title: Senior User Experience Designer
+- Designed a new FX Forwards trading interface processing $41B in daily trades; the platform won Best Broker for Spot FX five consecutive years.
+- Supported a 30% acceleration in Spot FX trading through iceberg order designs on a platform averaging $100B in daily volume.
+
+UI/UX Consulting (KPMG, Citigroup, Medco) — May 2008 to February 2012
+Title: Senior Design Consultant
+- KPMG: produced intranet templates that enforced Section 508 accessibility requirements for the entire firm.
+- Citigroup: supported Prime Finance business development by integrating legacy products into the Citi Velocity application within strict branding guidelines.
+- Medco Health Solutions: designed a new B2B homepage and interactive communication center, from sitemaps to final UI specifications.
+
+JPMorgan Chase Private Bank — May 2007 to May 2008 — New York, NY
+Title: Senior User Interface Designer and Information Architect
+- Consolidated legacy systems into a turnkey single sign-on experience for bankers managing $25M+ minimum accounts, contributing to the firm's ranking as the #1 Private Bank Globally by Euromoney.
+
+Bank of New York – Pershing LLC — Jersey City, NJ
+Title: Assistant Vice President, Multimedia Design
+- Directed a 10-person design team through major acquisitions, leading product design for flagship brokerage applications that generated $330M in annual revenue and managed $30B in customer assets.
+- Products won multiple CODiE Awards and a #1 overall ranking from Gomez Advisors for Best Online Brokerage Service.
+
+Core competencies
+- Design and strategy: envisioning and maintaining end-to-end customer journeys; articulating design decisions to key stakeholders.
+- Methodologies: Design Thinking, User-Centered Design, user task and workflow analysis, end-user research and analysis.
+- Process leadership: leading design processes, overseeing team capacity, managing project master files alongside local design systems.
+- Execution: information architecture, wireframes and interactive prototypes, usability testing.
+
+Education and certifications
+- Pratt Institute, BFA (Honors), Computer Graphics and Interactivity, New York, NY
+- Anthropic Claude 101 certification (2026)
+- Google AI Professional Certificate and Google AI for App Building (2026)
+- ACI Dealing Simulation certification
+
+Tools and skills
+Figma, Figma Make, Sketch, Adobe suite, Adobe Firefly, UserTesting.com, Google Gemini, NotebookLM, Claude, Claude Design. Visual and interaction design, human-centered design, wireframes and prototypes, web, mobile and watch apps, information architecture, user and market research, usability testing, iOS and Android design.
