@@ -121,6 +121,11 @@ describe("limits", () => {
     // another visitor is unaffected
     expect((await lines(await worker.fetch(req(ask("hi"), { ip: "5.6.7.8" }), env, ctx))).at(-1)).toEqual({ done: true });
   });
+  it("visitor_limit_configurable", async () => {
+    const env = { ...baseEnv(), VISITOR_LIMIT: "2" };
+    for (let i = 0; i < 2; i++) await lines(await worker.fetch(req(ask("hi")), env, ctx));
+    expect(await lines(await worker.fetch(req(ask("hi")), env, ctx))).toEqual([{ error: "rate_limited" }]);
+  });
   it("daily_limit", async () => {
     const env = baseEnv();
     const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");

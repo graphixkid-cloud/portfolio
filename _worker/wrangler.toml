@@ -8,6 +8,8 @@ workers_dev = true
 MODEL = "claude-haiku-5-5"
 ALLOWED_ORIGINS = "https://rickhollandsworth.com"
 DAILY_LIMIT = "450"
+# Messages per visitor per hour. Raised to 100 while Rick tests; set back to "20" at launch.
+VISITOR_LIMIT = "100"
 
 # The deploy workflow finds or creates the KV namespace and fills in its ID.
 [[kv_namespaces]]

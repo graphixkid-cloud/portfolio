@@ -16,13 +16,14 @@ export async function checkLimits(env, ipHash, now = new Date()) {
   const day = iso.slice(0, 10).replace(/-/g, "");
   const hour = day + iso.slice(11, 13);
   const daily = Number(env.DAILY_LIMIT) || DAILY_DEFAULT;
+  const perVisitor = Number(env.VISITOR_LIMIT) || VISITOR_PER_HOUR;
   const vKey = `v:${ipHash}:${hour}`;
   const dKey = `d:${day}`;
   const [v, d] = await Promise.all([env.LIMITS.get(vKey), env.LIMITS.get(dKey)]);
   const vn = Number(v) || 0;
   const dn = Number(d) || 0;
   if (dn >= daily) return "daily";
-  if (vn >= VISITOR_PER_HOUR) return "visitor";
+  if (vn >= perVisitor) return "visitor";
   await Promise.all([
     env.LIMITS.put(vKey, String(vn + 1), { expirationTtl: 3600 }),
     env.LIMITS.put(dKey, String(dn + 1), { expirationTtl: 86400 }),
