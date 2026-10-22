@@ -5,7 +5,7 @@ import { checkLimits, hashIp } from "./limits.js";
 
 const MAX_CHARS = 500;
 const MAX_TURNS = 10;
-const MAX_TOKENS = 400;
+const MAX_TOKENS = 800; // room for longer asks like a 2-minute pitch; the prompt keeps normal answers short
 const MAX_HISTORY_CHARS = 2000; // per earlier turn, to bound cost
 const UPSTREAM_TIMEOUT_MS = 30000;
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
@@ -67,6 +67,8 @@ async function pump(upstream, writer) {
         try { ev = JSON.parse(data); } catch { continue; }
         if (ev.type === "content_block_delta" && ev.delta?.type === "text_delta" && ev.delta.text) {
           await writer.write(enc.encode(sseLine({ t: ev.delta.text })));
+        } else if (ev.type === "message_delta" && ev.delta?.stop_reason === "max_tokens") {
+          await writer.write(enc.encode(sseLine({ cut: true })));
         } else if (ev.type === "message_stop") {
           await writer.write(enc.encode(sseLine({ done: true })));
           finished = true;

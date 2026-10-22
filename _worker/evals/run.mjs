@@ -17,21 +17,23 @@ async function ask(q, page) {
     body: JSON.stringify({ messages: [{ role: "user", content: q }], page }),
   });
   const text = await res.text();
-  let out = "", err = null;
+  let out = "", err = null, cut = false;
   for (const line of text.split("\n")) {
     if (!line.startsWith("data: ")) continue;
     const ev = JSON.parse(line.slice(6));
     if (ev.t) out += ev.t;
     if (ev.error) err = ev.error;
+    if (ev.cut) cut = true;
   }
-  return { status: res.status, out, err };
+  return { status: res.status, out, err, cut };
 }
 
 let failed = 0;
 for (const [i, it] of items.entries()) {
-  const { status, out, err } = await ask(it.q, it.page);
+  const { status, out, err, cut } = await ask(it.q, it.page);
   const problems = [];
   if (status !== 200 || err) problems.push(`status ${status} ${err || ""}`);
+  if (cut) problems.push("answer cut off at the length limit");
   for (const bad of it.must_not_include || []) if (out.toLowerCase().includes(bad.toLowerCase())) problems.push(`contains "${bad}"`);
   if (it.must_include_any && !it.must_include_any.some((s) => out.toLowerCase().includes(s.toLowerCase()))) problems.push(`missing one of ${JSON.stringify(it.must_include_any)}`);
   if (it.expect_link && !out.includes(it.expect_link)) problems.push(`no link to ${it.expect_link}`);

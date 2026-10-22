@@ -127,6 +127,17 @@
   ]
  },
  {
+  "q": "Can you give me a quick 2-minute elevator pitch of Rick's career history?",
+  "must_include_any": [
+   "1998",
+   "Pershing"
+  ],
+  "must_not_include": [
+   "late 2000s",
+   "](https://rickholl\n"
+  ]
+ },
+ {
   "q": "Can I see his kids' smartwatch case study?",
   "expect_link": "/work/gizmo-watch/"
  },

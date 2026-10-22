@@ -11,7 +11,14 @@ Key career achievements
 - Asset and revenue growth (Bank of New York / Pershing): led design for flagship brokerage platforms generating $330M annually and managing $30B in assets.
 - Global consolidation (JPMorgan Chase): unified legacy systems into a turnkey single sign-on platform for bankers managing $25M+ accounts, elevating global rankings.
 
-Experience
+Career timeline (oldest first)
+1. Bank of New York – Pershing LLC, Assistant Vice President, Multimedia Design (1998–2007)
+2. JPMorgan Chase Private Bank, Senior User Interface Designer and Information Architect (2007–2008)
+3. UI/UX consulting for KPMG, Citigroup and Medco, Senior Design Consultant (2008–2012)
+4. EBS BrokerTec (now CME Group), Senior User Experience Designer (2012–2017)
+5. Verizon, UX Design Lead → Lead Experience Designer → Principal Experience Designer (2017–2026)
+
+Experience (most recent first)
 
 Verizon — July 2017 to August 2026 — Basking Ridge, NJ
 Titles: Principal Experience Designer (May 2021 – Aug 2026); Lead Experience Designer (Oct 2018 – May 2021); UX Design Lead (Jul 2017 – Oct 2018)
@@ -36,7 +43,7 @@ JPMorgan Chase Private Bank — May 2007 to May 2008 — New York, NY
 Title: Senior User Interface Designer and Information Architect
 - Consolidated legacy systems into a turnkey single sign-on experience for bankers managing $25M+ minimum accounts, contributing to the firm's ranking as the #1 Private Bank Globally by Euromoney.
 
-Bank of New York – Pershing LLC — Jersey City, NJ
+Bank of New York – Pershing LLC — September 1998 to April 2007 — Jersey City, NJ
 Title: Assistant Vice President, Multimedia Design
 - Directed a 10-person design team through major acquisitions, leading product design for flagship brokerage applications that generated $330M in annual revenue and managed $30B in customer assets.
 - Products won multiple CODiE Awards and a #1 overall ranking from Gomez Advisors for Best Online Brokerage Service.

@@ -139,6 +139,16 @@ for (const url of targets) {
     assert.deepEqual(hrefs, ["mailto:rick.hollandsworth@outlook.com", "https://www.linkedin.com/in/rickhollandsworth/"]);
   });
 
+  await test("cut_off_answer_is_tidied", url, async (p) => {
+    p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ t: "Rick led UX at EBS. See the [EBS case study](https://rickholl" }, { cut: true }, { done: true }]) });
+    await openPanel(p);
+    await p.locator(".ask-input").fill("pitch"); await p.locator(".ask-input").press("Enter");
+    const text = await lastAssistantText(p);
+    assert.ok(text.startsWith("Rick led UX at EBS."), text);
+    assert.ok(!text.includes("rickholl") && !text.includes("["), text);
+    assert.ok(text.includes("That answer ran long"), text);
+  });
+
   await test("empty_answer_shows_fallback", url, async (p) => {
     p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ done: true }]) });
     await openPanel(p);

@@ -83,7 +83,7 @@ describe("request validation", () => {
     const sent = JSON.parse(init.body);
     expect(sent.system[1].cache_control.type).toBe("ephemeral");
     expect(sent.system[1].text).toBe(KNOWLEDGE);
-    expect(sent.max_tokens).toBe(400);
+    expect(sent.max_tokens).toBe(800);
     expect(sent.model).toBe("claude-test-model");
     expect(sent.stream).toBe(true);
     expect(sent.thinking).toEqual({ type: "disabled" });
@@ -96,6 +96,10 @@ describe("streaming", () => {
     const res = await worker.fetch(req(ask("What did Rick do at EBS?")), baseEnv(), ctx);
     expect(res.headers.get("content-type")).toMatch("text/event-stream");
     expect(await lines(res)).toEqual([{ t: "Rick " }, { t: "led UX." }, { done: true }]);
+  });
+  it("reports_cut_off_answers", async () => {
+    fetchMock.mockImplementation(async () => sse([delta("Rick led"), { type: "message_delta", delta: { stop_reason: "max_tokens" } }, { type: "message_stop" }]));
+    expect(await lines(await worker.fetch(req(ask("hi")), baseEnv(), ctx))).toEqual([{ t: "Rick led" }, { cut: true }, { done: true }]);
   });
   it("upstream_error", async () => {
     fetchMock.mockImplementation(async () => new Response("overloaded", { status: 529 }));

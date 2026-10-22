@@ -245,12 +245,19 @@
     setBusy(true);
     save();
 
-    var answer = "", finished = false, failure = null;
+    var answer = "", finished = false, failure = null, cut = false;
     var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 45000);
     function paint() { b.classList.remove("ask-msg--typing"); b.textContent = answer; scrollDown(); }
     function finish() {
       clearTimeout(timer);
+      if (answer && cut) {
+        // The answer hit the length limit: drop a half-written link or sentence and say so.
+        answer = answer.replace(/\s*\[[^\]]*(\]\([^)]*)?$/, "").replace(/\s*\*\*[^*]*$/, "").trimEnd();
+        var lastStop = Math.max(answer.lastIndexOf(". "), answer.lastIndexOf(".\n"), answer.endsWith(".") ? answer.length - 1 : -1);
+        if (lastStop > answer.length * 0.6) answer = answer.slice(0, lastStop + 1);
+        answer += "\n\n(That answer ran long. Ask a follow-up for more detail.)";
+      }
       if (answer) {
         b.classList.remove("ask-msg--typing");
         renderMarkdown(answer, b);
@@ -273,6 +280,7 @@
     }
     function handle(ev) {
       if (ev.t) { answer += ev.t; paint(); }
+      if (ev.cut) cut = true;
       if (ev.done) finished = true;
       if (ev.error) failure = ev.error;
     }
