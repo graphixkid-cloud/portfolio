@@ -213,8 +213,14 @@
       contactButton(),
       el("a", { class: "ask-link ask-cta-link", href: LINKEDIN, target: "_blank", rel: "noopener", text: "or message Rick on LinkedIn", onclick: function () { track("contact-linkedin"); } })
     ]));
-    log.appendChild(el("p", { class: "ask-label", text: "Try asking" }));
-    log.appendChild(chips(STARTERS));
+    // Starter questions only until the visitor asks something.
+    if (!state.messages.length) {
+      log.appendChild(el("p", { class: "ask-label ask-starter", text: "Try asking" }));
+      log.appendChild(chips(STARTERS)).classList.add("ask-starter");
+    }
+  }
+  function removeStarters() {
+    Array.prototype.forEach.call(log.querySelectorAll(".ask-starter"), function (n) { n.parentNode.removeChild(n); });
   }
   function renderHistory() {
     log.textContent = "";
@@ -252,6 +258,7 @@
     if (!text || state.busy) return;
     track("send");
     state.asked.push(text);
+    removeStarters();
     state.messages.push({ role: "user", content: text });
     bubble("user").textContent = text;
     input.value = ""; updateCounter();
@@ -286,8 +293,6 @@
       if (finished && !failure) {
         live.textContent = b.textContent;
         if (needsPassword(b)) log.appendChild(passwordNotice());
-        var rest = STARTERS.filter(function (q) { return state.asked.indexOf(q) < 0; }).slice(0, 2);
-        if (rest.length) log.appendChild(chips(rest));
       } else {
         fallback(failure === "rate_limited" ? "rate_limited" : "unavailable", !!answer);
       }

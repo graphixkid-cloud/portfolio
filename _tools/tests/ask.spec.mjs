@@ -91,6 +91,7 @@ for (const url of targets) {
     await openPanel(p);
     await p.getByRole("button", { name: "What did Rick do at EBS?" }).click();
     await lastAssistantText(p);
+    assert.equal(await p.locator(".ask-chip").count(), 0, "starter questions removed after the first question");
     const body = p.__posts[0];
     assert.equal(body.messages.at(-1).content, "What did Rick do at EBS?");
     assert.ok(typeof body.page === "string" && body.page.length > 0);
