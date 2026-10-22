@@ -59,6 +59,16 @@
 .ask-dots i:nth-child(2){animation-delay:.15s}.ask-dots i:nth-child(3){animation-delay:.3s}
 @keyframes ask-dot{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
 
+/* answer rating */
+.ask-rate{display:flex;align-items:center;gap:2px;margin:-10px 0 0 2px;min-height:40px}
+.ask-rate-btn{width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:var(--ask-ink-2);display:grid;place-items:center}
+.ask-rate-btn:not(:disabled):hover{background:#e3e7eb;color:var(--ask-ink)}
+.ask-rate-btn[aria-pressed="true"]{background:#dde6ef;color:var(--ask-accent-strong)}
+.ask-rate-btn:disabled{cursor:default}
+.ask-rate-btn:disabled[aria-pressed="false"]{opacity:.35}
+.ask-rate-note{margin-left:6px;font-size:13px;color:var(--ask-ink-2)}
+.ask-rate-note .ask-link{font-weight:600}
+
 .ask-link{color:var(--ask-accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .ask-link:hover{color:var(--ask-accent-strong)}
 .ask-cta{display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -114,6 +124,7 @@
   .ask-panel{left:0;right:0;bottom:0;width:100%;height:min(780px,calc(100% - 64px));border-radius:18px 18px 0 0}
   .ask-root.ask-open .ask-launcher{display:none}
   .ask-footer{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+  .ask-rate-btn{width:44px;height:44px}
 }
 
 @media (prefers-reduced-motion:reduce){

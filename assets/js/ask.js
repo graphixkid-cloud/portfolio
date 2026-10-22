@@ -53,6 +53,9 @@
     mail: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 6.5L12 13l8.5-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
     li: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6S16 11.3 16 13v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
     lock: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    sparkle: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M10 5.0C11.02 10.27 13.23 12.48 18.5 13.5C13.23 14.52 11.02 16.73 10 22.0C8.98 16.73 6.77 14.52 1.5 13.5C6.77 12.48 8.98 10.27 10 5.0ZM18.5 1.5C18.98 3.98 20.02 5.02 22.5 5.5C20.02 5.98 18.98 7.02 18.5 9.5C18.02 7.02 16.98 5.98 14.5 5.5C16.98 5.02 18.02 3.98 18.5 1.5Z" fill="currentColor"/></svg>',
+    up: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></g></svg>',
+    down: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 12 12)"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></g></svg>',
     alert: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5v5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor"/></svg>'
   };
   function icon(name) { var s = el("span", { class: "ask-ico" }); s.innerHTML = SVG[name]; return s; } // static, trusted markup only
@@ -118,7 +121,14 @@
     if (note) { lines.push(""); lines.push(note); }
     return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
   }
-  window.__ask = { buildMailto: buildMailto, safeUrl: safeUrl };
+  // Thumbs-down feedback: a pre-filled email the visitor chooses to send. Nothing goes to a server.
+  function feedbackMailto(question, answer) {
+    var a = String(answer || "");
+    if (a.length > 1200) a = a.slice(0, 1200) + "…";
+    var lines = ["Page: " + PAGE, "", "Question:", String(question || "").trim() || "(not available)", "", "Assistant's answer:", a, "", "What went wrong:", ""];
+    return "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Portfolio Assistant feedback") + "&body=" + encodeURIComponent(lines.join("\n"));
+  }
+  window.__ask = { buildMailto: buildMailto, safeUrl: safeUrl, feedbackMailto: feedbackMailto };
 
   // ---------- state ----------
   var state = { messages: [], asked: [], open: false, busy: false };
@@ -141,7 +151,7 @@
 
   var closeBtn = el("button", { type: "button", class: "ask-close", "aria-label": "Close assistant" }, [icon("close")]);
   var header = el("div", { class: "ask-header" }, [
-    el("span", { class: "ask-mono", "aria-hidden": "true", text: "RH" }),
+    el("span", { class: "ask-mono", "aria-hidden": "true" }, [icon("sparkle")]),
     el("div", { class: "ask-head-text" }, [
       el("div", { class: "ask-title-row" }, [el("h2", { id: "ask-title", class: "ask-title", text: "Portfolio Assistant" }), el("span", { class: "ask-badge", text: "AI" })]),
       el("p", { class: "ask-sub", text: "Usually replies instantly" })
@@ -206,6 +216,36 @@
   }
   function scrollDown() { chatView.scrollTop = chatView.scrollHeight; }
 
+  // Thumbs up / down under each answer. One rating per answer; it is kept with the message in this tab
+  // and counted in GoatCounter as an event name only (no message text).
+  function rateBar(msg, question) {
+    var bar = el("div", { class: "ask-rate", role: "group", "aria-label": "Rate this answer" });
+    var up = el("button", { type: "button", class: "ask-rate-btn", "aria-label": "Helpful", "aria-pressed": "false", title: "Helpful" }, [icon("up")]);
+    var down = el("button", { type: "button", class: "ask-rate-btn", "aria-label": "Not helpful", "aria-pressed": "false", title: "Not helpful" }, [icon("down")]);
+    var note = el("span", { class: "ask-rate-note", role: "status" });
+    bar.appendChild(up); bar.appendChild(down); bar.appendChild(note);
+    function show(r) {
+      up.setAttribute("aria-pressed", String(r === "up"));
+      down.setAttribute("aria-pressed", String(r === "down"));
+      up.disabled = down.disabled = true;
+      note.textContent = "";
+      if (r === "up") note.textContent = "Thanks for the feedback.";
+      else {
+        note.appendChild(document.createTextNode("Thanks. "));
+        note.appendChild(el("a", { class: "ask-link", href: feedbackMailto(question, msg.content), text: "Tell Rick what went wrong", onclick: function () { track("rate-email"); } }));
+      }
+    }
+    function rate(r) { if (msg.rating) return; msg.rating = r; track("rate-" + r); show(r); save(); }
+    up.addEventListener("click", function () { rate("up"); });
+    down.addEventListener("click", function () { rate("down"); });
+    if (msg.rating === "up" || msg.rating === "down") show(msg.rating);
+    return bar;
+  }
+  function lastQuestion(i) {
+    for (var j = i - 1; j >= 0; j--) if (state.messages[j].role === "user") return state.messages[j].content;
+    return "";
+  }
+
   function renderWelcome() {
     var intro = bubble("assistant");
     intro.appendChild(el("p", { text: INTRO1 })); intro.appendChild(el("p", { text: INTRO2 }));
@@ -225,9 +265,13 @@
   function renderHistory() {
     log.textContent = "";
     renderWelcome();
-    state.messages.forEach(function (m) {
+    state.messages.forEach(function (m, i) {
       var b = bubble(m.role);
-      if (m.role === "assistant") { renderMarkdown(m.content, b); if (needsPassword(b)) log.appendChild(passwordNotice()); } else b.textContent = m.content;
+      if (m.role === "assistant") {
+        renderMarkdown(m.content, b);
+        log.appendChild(rateBar(m, lastQuestion(i)));
+        if (needsPassword(b)) log.appendChild(passwordNotice());
+      } else b.textContent = m.content;
     });
     scrollDown();
   }
@@ -285,7 +329,9 @@
       if (answer) {
         b.classList.remove("ask-msg--typing");
         renderMarkdown(answer, b);
-        state.messages.push({ role: "assistant", content: answer });
+        var reply = { role: "assistant", content: answer };
+        state.messages.push(reply);
+        log.appendChild(rateBar(reply, text));
       } else {
         b.parentNode.parentNode.removeChild(b.parentNode);
       }
@@ -312,7 +358,7 @@
     fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: state.messages.slice(-10), page: PAGE }),
+      body: JSON.stringify({ messages: state.messages.slice(-10).map(function (m) { return { role: m.role, content: m.content }; }), page: PAGE }),
       signal: ctrl ? ctrl.signal : undefined
     }).then(function (res) {
       if (!res.ok || !res.body) { failure = res.status === 429 ? "rate_limited" : "unavailable"; return; }

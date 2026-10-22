@@ -277,6 +277,61 @@ for (const url of targets) {
     assert.equal(anim, "none");
   }, { reducedMotion: "reduce" });
 
+  // ---------- answer ratings (thumbs up / down) ----------
+  const stubCounter = (p) => p.evaluate(() => { window.__gc = []; window.goatcounter = { count: (o) => window.__gc.push(o.path) }; });
+  const counted = (p) => p.evaluate(() => window.__gc);
+  async function ask(p, q) { await p.locator(".ask-input").fill(q); await p.locator(".ask-input").press("Enter"); await lastAssistantText(p); }
+
+  await test("rates_helpful", url, async (p) => {
+    await openPanel(p); await stubCounter(p);
+    await ask(p, "Tell me about EBS");
+    assert.equal(await p.locator(".ask-rate").count(), 1, "one rating row, none on the intro");
+    const up = p.getByRole("button", { name: "Helpful", exact: true });
+    const down = p.getByRole("button", { name: "Not helpful", exact: true });
+    assert.equal(await up.getAttribute("aria-pressed"), "false");
+    await up.click();
+    assert.equal(await up.getAttribute("aria-pressed"), "true");
+    assert.ok(await up.isDisabled() && await down.isDisabled(), "locked after one rating");
+    assert.ok(await p.locator(".ask-rate").getByText("Thanks for the feedback.").isVisible());
+    assert.deepEqual((await counted(p)).filter((x) => x.startsWith("ask-rate")), ["ask-rate-up"]);
+  });
+
+  await test("rates_not_helpful_offers_email", url, async (p) => {
+    await openPanel(p); await stubCounter(p);
+    await ask(p, "What about Google & Apple?");
+    await p.getByRole("button", { name: "Not helpful", exact: true }).click();
+    const link = p.getByRole("link", { name: "Tell Rick what went wrong" });
+    assert.ok(await link.isVisible());
+    const href = await link.getAttribute("href");
+    assert.ok(href.startsWith("mailto:rick.hollandsworth@outlook.com?subject=Portfolio%20Assistant%20feedback&body="), href);
+    const body = decodeURIComponent(href.split("&body=")[1]);
+    assert.ok(body.includes("What about Google & Apple?") && body.includes("Rick led UX."), body);
+    assert.ok(!href.includes("undefined"));
+    await link.evaluate((a) => a.addEventListener("click", (e) => e.preventDefault()));
+    await link.click();
+    assert.deepEqual((await counted(p)).filter((x) => x.startsWith("ask-rate")), ["ask-rate-down", "ask-rate-email"]);
+  });
+
+  await test("rating_kept_and_not_sent", url, async (p) => {
+    await openPanel(p);
+    await ask(p, "first");
+    await p.getByRole("button", { name: "Helpful", exact: true }).click();
+    await p.reload(); await p.waitForSelector(".ask-launcher"); await openPanel(p);
+    const up = p.getByRole("button", { name: "Helpful", exact: true });
+    assert.equal(await up.getAttribute("aria-pressed"), "true", "rating survives a page change");
+    await ask(p, "second");
+    for (const m of p.__posts.at(-1).messages) assert.deepEqual(Object.keys(m).sort(), ["content", "role"]);
+    assert.equal(await p.locator(".ask-rate").count(), 2);
+  });
+
+  await test("no_rating_on_failure", url, async (p) => {
+    p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ error: "unavailable" }]) });
+    await openPanel(p);
+    await p.locator(".ask-input").fill("hi"); await p.locator(".ask-input").press("Enter");
+    await p.locator(".ask-notice").waitFor();
+    assert.equal(await p.locator(".ask-rate").count(), 0);
+  });
+
   await test("keeps_history_across_pages", url, async (p) => {
     await openPanel(p);
     await p.locator(".ask-input").fill("remember me"); await p.locator(".ask-input").press("Enter");
