@@ -36,6 +36,20 @@ Rick directed UX strategy for a $1.25B Verizon consumer portfolio reaching 20M+ 
 - JPMorgan Chase Private Bank (2007–2008): the single sign-on workstation served private bankers managing high-net-worth accounts with $25M+ minimums.
 - BNY Mellon / Pershing (1998–2007, Assistant Vice President, Multimedia Design): led 10 designers through a series of broker-dealer acquisitions (PCFN, DLJdirect, CSFBdirect, Harrisdirect). The brokerage platforms generated $330M in annual revenue and managed $30B in customer assets, and won multiple CODiE Awards (including Best Online Brokerage Service and Best Product) and a #1 overall ranking from Gomez Advisors.
 
+## SaaS experience (B2C and B2B)
+When visitors ask about SaaS, subscription products, cloud platforms, B2B or enterprise software, this is Rick's relevant experience. He has 15+ years leading end-to-end UX and product strategy across consumer (B2C) and business (B2B) software-as-a-service.
+- B2C consumer SaaS and subscription products at Verizon:
+  - Verizon Cloud ($1B a year in recurring revenue, 5.7M+ active users): multi-tier consumer cloud storage subscription (500GB, 2TB and Unlimited plans) across iOS, Android, macOS and Windows.
+  - Verizon Family / Smart Family ($220M a year in recurring revenue, 950K+ subscriptions, about 1.2M users): subscription family safety, location and parental-control app suite.
+  - Digital Secure and Mobile / Home Protect: security, identity protection and device support subscription platform.
+- B2B and enterprise SaaS platforms:
+  - EBS BrokerTec / CME Group: Senior User Experience Designer for EBS Direct, a B2B FX trading platform used by 10,000+ institutional bank traders, with $41B in daily FX Forwards volume.
+  - BNY Mellon Pershing: enterprise brokerage web platforms, including NetX360, for wealth managers and financial institutions ($30B in customer assets).
+  - JPMorgan Chase Private Bank: enterprise single sign-on workstation for private bankers.
+  - KPMG and Medco Health Solutions: enterprise B2B web portals and firm-wide intranet software.
+  - FinFront UI SDK: headless React UI component infrastructure for fintech and trading platforms (self-directed).
+  - Habita IQ: a self-directed B2B fintech subscription index prototype, designed across three subscription tiers (Essentials, Professional and Institutional).
+
 ## What Rick is looking for
 - Staff, Principal, Lead and Director product design roles, in enterprise SaaS, fintech, CX platforms and consumer ecosystems.
 - Also open to consulting engagements.

@@ -106,6 +106,27 @@
   ]
  },
  {
+  "q": "What SaaS experience does Rick have?",
+  "must_include_any": [
+   "Verizon Cloud",
+   "Cloud"
+  ],
+  "must_not_include": [
+   "647",
+   "doesn't have SaaS",
+   "no SaaS"
+  ]
+ },
+ {
+  "q": "Has Rick worked on B2B enterprise software?",
+  "must_include_any": [
+   "EBS",
+   "Pershing",
+   "KPMG",
+   "enterprise"
+  ]
+ },
+ {
   "q": "Can I see his kids' smartwatch case study?",
   "expect_link": "/work/gizmo-watch/"
  },
