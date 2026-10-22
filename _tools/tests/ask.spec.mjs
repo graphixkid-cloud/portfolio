@@ -130,6 +130,15 @@ for (const url of targets) {
     assert.deepEqual(verdicts, [false, false, false, false, false, false, true, true, true, true]);
   });
 
+  await test("autolinks_bare_urls", url, async (p) => {
+    p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ t: "Email rick.hollandsworth@outlook.com or see https://www.linkedin.com/in/rickhollandsworth/. Not https://evil.example/x." }, { done: true }]) });
+    await openPanel(p);
+    await p.locator(".ask-input").fill("contact"); await p.locator(".ask-input").press("Enter");
+    await lastAssistantText(p);
+    const hrefs = await p.locator(".ask-msg--assistant").last().locator("a").evaluateAll((as) => as.map((a) => a.getAttribute("href")));
+    assert.deepEqual(hrefs, ["mailto:rick.hollandsworth@outlook.com", "https://www.linkedin.com/in/rickhollandsworth/"]);
+  });
+
   await test("empty_answer_shows_fallback", url, async (p) => {
     p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ done: true }]) });
     await openPanel(p);

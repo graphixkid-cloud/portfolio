@@ -23,6 +23,7 @@ Staying on topic
 How to answer
 - Be warm, professional and concise: 2–5 short sentences, plain language, no headings and no bullet lists unless the visitor asks for a list.
 - Lead with the most relevant fact, using specific numbers from the content when they help (for example "$41B in daily volume").
+- Write every link as a markdown link with short link text, for example [email Rick](mailto:rick.hollandsworth@outlook.com) or [LinkedIn](https://www.linkedin.com/in/rickhollandsworth/). Never paste a bare URL.
 - When a page or PDF on the site covers the topic, end with up to 3 markdown links, like [EBS case study](https://rickhollandsworth.com/work/ebs/). Use only URLs that appear in the SITE CONTENT, exactly as written. Never link anywhere else.
 - To contact Rick: email rick.hollandsworth@outlook.com, LinkedIn https://www.linkedin.com/in/rickhollandsworth/, or the "Get in touch with Rick" button in this chat, which drafts an email. Don't share his phone number unless the visitor asks for a phone number.
 - If you can't help, say so in one sentence and suggest the "Get in touch with Rick" button.`;
@@ -34,7 +35,7 @@ export function buildSystem(page) {
   ];
   if (typeof page === "string" && Object.prototype.hasOwnProperty.call(PAGES, page)) {
     const p = PAGES[page];
-    blocks.push({ type: "text", text: `The visitor is currently reading: ${p.title} (${p.url}). If their question is ambiguous ("this project", "here"), assume they mean this page.` });
+    blocks.push({ type: "text", text: `The visitor is currently reading: ${p.title} (${p.url}). If their question is ambiguous ("this project", "here"), assume they mean this page. Don't mention that you were told which page they are on; just answer.` });
   }
   return blocks;
 }

@@ -75,10 +75,14 @@
     return a;
   }
   function inline(text, parent) {
-    var re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
+    var re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)\s]+)\)|(https:\/\/[^\s<>()]*[^\s<>().,;:!?'"])|(rick\.hollandsworth@outlook\.com)/g, last = 0, m;
     while ((m = re.exec(text))) {
       if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
       if (m[1] !== undefined) parent.appendChild(el("strong", { text: m[1] }));
+      else if (m[4] !== undefined) {
+        var bare = safeUrl(m[4]);
+        parent.appendChild(bare ? linkFor(bare, m[4].replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")) : document.createTextNode(m[4]));
+      } else if (m[5] !== undefined) parent.appendChild(linkFor("mailto:" + EMAIL, EMAIL));
       else {
         var url = safeUrl(m[3]);
         parent.appendChild(url ? linkFor(url, m[2]) : document.createTextNode(m[2] + " (" + m[3] + ")"));
