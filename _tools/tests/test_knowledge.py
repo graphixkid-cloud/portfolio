@@ -49,6 +49,13 @@ def test_contact_included(k):
     assert "https://www.linkedin.com/in/rickhollandsworth/" in k
 
 
+def test_about_rick_included(k):
+    assert "Speaking Human" in k and "Additional background (approved by Rick)" in k
+    assert "editor note" not in k and "Approved by Rick (2026" not in k
+    for private in ["908", "267-567", "917) 374", "horstfra", "mcgeebr", "phlpkm", "1995", "GPA", "Hybrid", "647.63", "$99M", "$35M"]:
+        assert private not in k, private
+
+
 def test_size_budget(k):
     assert len(k) < 60000
 

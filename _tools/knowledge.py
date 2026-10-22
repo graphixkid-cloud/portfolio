@@ -2,7 +2,8 @@
 """Build the Portfolio Assistant's knowledge from the site's own sources.
 
 Sources: the home page (index.html, minus the generated case cards), each case study
-in _tools/cases/<slug>.html, and the plain-text résumé in _tools/resume.txt.
+in _tools/cases/<slug>.html, the plain-text résumé in _tools/resume.txt, and
+Rick's approved extra background in _tools/about-rick.md.
 Output: _worker/src/knowledge.js, which exports KNOWLEDGE (plain text) and PAGES
 (slug -> {title, url}). build_pages.py calls write_knowledge() at the end of every
 build, so the assistant always answers from what the site currently says.
@@ -126,6 +127,9 @@ def build_knowledge(root: Path) -> str:
     pdfs = "\n".join(f"- {SITE}/{p}" for p in PDFS)
     parts.append("## Downloadable PDFs\n" + pdfs + "\n- " + SITE + "/finfront/ (short link to the FinFront overview PDF)\n- " + SITE + "/ai/ (short link to the FinFront AI Assistant case study PDF)")
     parts.append("## Résumé\n" + (root / "_tools" / "resume.txt").read_text(encoding="utf-8").strip())
+    about = (root / "_tools" / "about-rick.md").read_text(encoding="utf-8")
+    about = re.sub(r"^# .*?\n\n.*?\n\n", "", about, count=1, flags=re.S)  # drop the title and editor note
+    parts.append("## Additional background (approved by Rick)\n\n" + about.strip())
     k = "\n\n".join(parts) + "\n"
     for bad in FORBIDDEN:
         if bad in k.lower():
