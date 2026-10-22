@@ -149,6 +149,23 @@ for (const url of targets) {
     assert.ok(text.includes("That answer ran long"), text);
   });
 
+  await test("password_pdf_warning", url, async (p) => {
+    p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ t: "See the [Gizmo PDF](https://rickhollandsworth.com/assets/pdf/verizon-gizmo-watch-case-study.pdf)." }, { done: true }]) });
+    await openPanel(p);
+    await p.locator(".ask-input").fill("gizmo pdf"); await p.locator(".ask-input").press("Enter");
+    await lastAssistantText(p);
+    const n = p.locator(".ask-notice--lock");
+    await n.waitFor();
+    assert.ok(await n.getByText("Password required").isVisible());
+    assert.ok(await n.getByRole("button", { name: "Ask Rick for the password" }).isVisible());
+    assert.equal(await n.locator('a[href^="mailto:rick.hollandsworth@outlook.com?subject=Case%20study%20password%20request"]').count(), 1);
+    // and not for open PDFs
+    p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ t: "See the [EBS PDF](https://rickhollandsworth.com/assets/pdf/ebs-case-study.pdf)." }, { done: true }]) });
+    await p.locator(".ask-input").fill("ebs pdf"); await p.locator(".ask-input").press("Enter");
+    await lastAssistantText(p);
+    assert.equal(await p.locator(".ask-notice--lock").count(), 1);
+  });
+
   await test("empty_answer_shows_fallback", url, async (p) => {
     p.__handler = (r) => r.fulfill({ status: 200, contentType: "text/event-stream", body: sse([{ done: true }]) });
     await openPanel(p);

@@ -52,6 +52,7 @@
     send: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     mail: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 6.5L12 13l8.5-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
     li: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6S16 11.3 16 13v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    lock: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
     alert: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5v5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor"/></svg>'
   };
   function icon(name) { var s = el("span", { class: "ask-ico" }); s.innerHTML = SVG[name]; return s; } // static, trusted markup only
@@ -174,6 +175,22 @@
       el("a", { class: "ask-link ask-iconlink", href: LINKEDIN, target: "_blank", rel: "noopener", onclick: function () { track("contact-linkedin"); } }, [icon("li"), el("span", { text: "linkedin.com/in/rickhollandsworth" })])
     ]);
   }
+  // Verizon case-study PDFs need a password from Rick: flag them whenever an answer links to one.
+  var LOCKED = /\/assets\/pdf\/verizon-(family|gizmo-watch|care-smart)-case-study\.pdf/i;
+  function passwordNotice() {
+    var box = el("div", { class: "ask-notice ask-notice--lock" });
+    box.appendChild(el("div", { class: "ask-notice-head" }, [icon("lock"), el("strong", { text: "Password required" })]));
+    box.appendChild(el("p", { text: "The Verizon case-study PDFs are password-protected. Rick includes the password in his application materials, or you can ask him for it." }));
+    box.appendChild(contactButton("Ask Rick for the password"));
+    box.appendChild(el("div", { class: "ask-contact-links" }, [
+      el("a", { class: "ask-link ask-iconlink", href: "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Case study password request"), onclick: function () { track("password-email"); } }, [icon("mail"), el("span", { text: "Email Rick" })]),
+      el("a", { class: "ask-link ask-iconlink", href: LINKEDIN, target: "_blank", rel: "noopener", onclick: function () { track("password-linkedin"); } }, [icon("li"), el("span", { text: "Message on LinkedIn" })])
+    ]));
+    return box;
+  }
+  function needsPassword(bubbleEl) {
+    return Array.prototype.some.call(bubbleEl.querySelectorAll("a"), function (a) { return LOCKED.test(a.getAttribute("href") || ""); });
+  }
   function chips(list) {
     var wrap = el("div", { class: "ask-chips" });
     list.forEach(function (q) {
@@ -204,7 +221,7 @@
     renderWelcome();
     state.messages.forEach(function (m) {
       var b = bubble(m.role);
-      if (m.role === "assistant") renderMarkdown(m.content, b); else b.textContent = m.content;
+      if (m.role === "assistant") { renderMarkdown(m.content, b); if (needsPassword(b)) log.appendChild(passwordNotice()); } else b.textContent = m.content;
     });
     scrollDown();
   }
@@ -268,6 +285,7 @@
       if (finished && !failure && !answer) failure = "unavailable";
       if (finished && !failure) {
         live.textContent = b.textContent;
+        if (needsPassword(b)) log.appendChild(passwordNotice());
         var rest = STARTERS.filter(function (q) { return state.asked.indexOf(q) < 0; }).slice(0, 2);
         if (rest.length) log.appendChild(chips(rest));
       } else {

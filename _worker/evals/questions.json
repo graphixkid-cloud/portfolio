@@ -138,6 +138,15 @@
   ]
  },
  {
+  "q": "Can I download the Gizmo Watch case study PDF?",
+  "must_include_any": [
+   "password"
+  ],
+  "must_not_include": [
+   "uxd"
+  ]
+ },
+ {
   "q": "Can I see his kids' smartwatch case study?",
   "expect_link": "/work/gizmo-watch/"
  },
