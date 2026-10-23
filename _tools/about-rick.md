@@ -36,6 +36,13 @@ Rick directed UX strategy for a $1.25B Verizon consumer portfolio reaching 20M+ 
 - JPMorgan Chase Private Bank (2007–2008): the single sign-on workstation served private bankers managing high-net-worth accounts with $25M+ minimums.
 - BNY Mellon / Pershing (1998–2007, Assistant Vice President, Multimedia Design): led 10 designers through a series of broker-dealer acquisitions (PCFN, DLJdirect, CSFBdirect, Harrisdirect). The brokerage platforms generated $330M in annual revenue and managed $30B in customer assets, and won multiple CODiE Awards (including Best Online Brokerage Service and Best Product) and a #1 overall ranking from Gomez Advisors.
 
+## Where Rick started: games and interactive media
+Added by Rick (2026-10-23). When describing this period, say "before Pershing" or "early in his career". Do not give a start year or a total number of years; Rick's experience is always stated as "15+ years".
+- Interactive CD-ROMs: Rick began by designing and creating CD-ROMs, including Chapman's Hands-On Powerboating for Hearst New Media, an interactive edition of the classic Chapman Piloting & Seamanship guide with powerboat-handling simulations (docking, rough water, fog, inlets) and animated Coast Guard rules of the road.
+- Skyworks Interactive (formerly Skyworks Technologies): Rick was a founding member of this game studio, founded by industry veterans David Crane and Garry Kitchen. Skyworks pioneered sponsored web "advergames" for major brands, building portals such as Candystand, NabiscoWorld and Postopia, and later made casual sports and arcade games for consoles, handhelds and iOS.
+- Candystand.com was Rick's first website: Nabisco and LifeSavers' free branded games portal, with games such as Candystand Miniature Golf, Boardwalk Bowling and Crunchball 3000.
+- Why it matters: Rick's roots are in games, simulation and brand-sponsored interactive experiences, alongside the fintech and consumer-app work he is best known for.
+
 ## SaaS experience (B2C and B2B)
 When visitors ask about SaaS, subscription products, cloud platforms, B2B or enterprise software, this is Rick's relevant experience. He has 15+ years leading end-to-end UX and product strategy across consumer (B2C) and business (B2B) software-as-a-service.
 - B2C consumer SaaS and subscription products at Verizon:
