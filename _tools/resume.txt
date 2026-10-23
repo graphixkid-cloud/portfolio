@@ -23,9 +23,9 @@ Experience (most recent first)
 Verizon — July 2017 to August 2026 — Basking Ridge, NJ
 Titles: Principal Experience Designer (May 2021 – Aug 2026); Lead Experience Designer (Oct 2018 – May 2021); UX Design Lead (Jul 2017 – Oct 2018)
 - Team leadership and scaling: hired and managed a design organization of nearly 30 designers and managers (full-time employees, contractors and agency partners) across the Verizon product ecosystem.
-- Managed high-impact portfolios: influenced design strategy for Verizon Cloud ($1B revenue, 5.74M users) and 5G Home Internet ($514M revenue).
-- Specialized solutions: delivered user-centric ecosystems for the Gizmo Watch (about 700K active kids' watches and 2.4M contacts) and the Verizon Family suite ($220M revenue).
-- Security engagement: drove adoption for Verizon Protect ($17.7M revenue) and integrated security dashboards to build user trust.
+- Managed high-impact portfolios: influenced design strategy for Verizon Cloud (5.74M users) and 5G Home Internet.
+- Specialized solutions: delivered user-centric ecosystems for the Gizmo Watch (about 700K active kids' watches and 2.4M contacts) and the Verizon Family suite.
+- Security engagement: drove adoption for Verizon Protect and integrated security dashboards to build user trust.
 - AI-driven design: uses AI tools (Gemini, NotebookLM, Figma Make) for user research, market research and data analysis, design concepts and rapid interactive prototyping.
 
 EBS BrokerTec (now CME Group) — March 2012 to March 2017 — Parsippany, NJ

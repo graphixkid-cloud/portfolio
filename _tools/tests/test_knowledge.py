@@ -52,7 +52,7 @@ def test_contact_included(k):
 def test_about_rick_included(k):
     assert "Speaking Human" in k and "Additional background (approved by Rick)" in k
     assert "editor note" not in k and "Approved by Rick (2026" not in k
-    for private in ["908", "267-567", "917) 374", "horstfra", "mcgeebr", "phlpkm", "1995", "GPA", "Hybrid", "647.63", "$99M", "$35M"]:
+    for private in ["908", "267-567", "917) 374", "horstfra", "mcgeebr", "phlpkm", "1995", "GPA", "Hybrid", "647.63", "$99M", "$35M", "$220M", "$514M", "$1B", "17.7M"]:
         assert private not in k, private
 
 
