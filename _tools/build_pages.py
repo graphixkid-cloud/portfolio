@@ -43,9 +43,9 @@ CASES = [
 PDFS = {  # path: lastmod
     "assets/pdf/rick-hollandsworth-resume.pdf": "2026-10-18",
     "assets/pdf/ebs-case-study.pdf": "2026-10-01",
-    "assets/pdf/finfront-overview.pdf": "2026-10-01",
-    "assets/pdf/finfront-design-library-case-study.pdf": "2026-10-02",
-    "assets/pdf/finfront-ai-assistant-case-study.pdf": "2026-10-16",
+    "assets/pdf/finfront-overview.pdf": "2026-10-26",
+    "assets/pdf/finfront-design-library-case-study.pdf": "2026-10-26",
+    "assets/pdf/finfront-ai-assistant-case-study.pdf": "2026-10-26",
 }
 
 # Portfolio Assistant (assets/js/ask.js). ASK_ENDPOINT is the deployed Worker's /chat URL.
