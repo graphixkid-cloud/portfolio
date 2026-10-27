@@ -40,7 +40,15 @@ CASES = [
          description="A 75-component fintech design system across five financial verticals, with live documentation and working prototypes, built Claude-first by Rick Hollandsworth."),
 ]
 
+# Standalone resource pages: _tools/pages/<slug>.html -> <slug>/index.html (same shell as the case pages).
+PAGES = [
+    dict(slug="guardrails",
+         title="AI Guardrails for Financial UX · Free checklist and Claude skills",
+         description="Seven rules for putting an AI assistant on a live trading, wealth, payments or banking screen, with a one-page checklist and Claude skills that run the review. By Rick Hollandsworth."),
+]
+
 PDFS = {  # path: lastmod
+    "assets/pdf/ai-guardrails-checklist.pdf": "2026-10-27",
     "assets/pdf/rick-hollandsworth-resume.pdf": "2026-10-18",
     "assets/pdf/ebs-case-study.pdf": "2026-10-01",
     "assets/pdf/finfront-overview.pdf": "2026-10-26",
@@ -192,6 +200,78 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(head, encoding="utf-8")
 
+    # ---------- resource pages ----------
+    for pg in PAGES:
+        slug = pg["slug"]; url = f"{SITE}/{slug}/"
+        art = (ROOT / "_tools" / "pages" / f"{slug}.html").read_text(encoding="utf-8")
+        h3 = first(r"<h3>(.*?)</h3>", art)
+        page_art = art.replace("<h3>", '<h1 class="case-title">').replace("</h3>", "</h1>")
+        page_art = page_art.replace("<h4>", '<h2 class="kicker">').replace("</h4>", "</h2>")
+        page_art = re.sub(r'href="ai"', 'href="../ai"', relink(page_art, "../"))
+        page_art = page_art.replace('href="../#contact"', 'href="#contact"')  # contact section is on this page too
+        og = f"{SITE}/assets/img/og-{slug}.jpg"
+        e = html.escape
+        full_title = f"{pg['title']} · Rick Hollandsworth"
+        ld = {"@context": "https://schema.org", "@type": "CreativeWork", "name": html.unescape(h3), "description": pg["description"],
+              "url": url, "image": og, "inLanguage": "en", "isAccessibleForFree": True,
+              "author": {"@type": "Person", "@id": f"{SITE}/#rick", "name": person_name, "url": f"{SITE}/"}}
+        out_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{e(full_title)}</title>
+<meta name="description" content="{e(pg['description'])}">
+<meta name="author" content="{person_name}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{e(full_title)}">
+<meta property="og:description" content="{e(pg['description'])}">
+<meta property="og:image" content="{og}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="{person_name}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(full_title)}">
+<meta name="twitter:description" content="{e(pg['description'])}">
+<meta name="twitter:image" content="{og}">
+<script type="application/ld+json">
+{json.dumps(ld, ensure_ascii=False, indent=1)}
+</script>
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+{fonts}
+{style}
+<link rel="stylesheet" href="../assets/css/ask.css">
+</head>
+<body>
+<a class="skip" href="#case">Skip to content</a>
+
+{relink(header, "../").replace('href="../#top"', 'href="../"')}
+
+<main id="top">
+<section class="block case-page" aria-label="{e(html.unescape(h3))}">
+  <div class="wrap" id="case">
+    <p class="crumbs"><a href="../#work">← All work</a></p>
+{page_art.rstrip()}
+  </div>
+</section>
+
+{relink(contact, "../")}
+</main>
+
+{footer}
+
+{scripts}
+{ask_tag("../", slug)}
+</body>
+</html>
+"""
+        (ROOT / slug).mkdir(exist_ok=True)
+        (ROOT / slug / "index.html").write_text(out_html, encoding="utf-8")
+
     # ---------- home cards ----------
     cards = []
     for c in CASES:
@@ -229,7 +309,7 @@ def main():
     index_path.write_text(home, encoding="utf-8")
 
     # ---------- sitemap ----------
-    urls = [(f"{SITE}/", TODAY)] + [(f"{SITE}/work/{c['slug']}/", TODAY) for c in CASES] + [(f"{SITE}/{p}", d) for p, d in PDFS.items()]
+    urls = [(f"{SITE}/", TODAY)] + [(f"{SITE}/work/{c['slug']}/", TODAY) for c in CASES] + [(f"{SITE}/{pg['slug']}/", TODAY) for pg in PAGES] + [(f"{SITE}/{p}", d) for p, d in PDFS.items()]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, d in urls:
         sm += ["  <url>", f"    <loc>{u}</loc>", f"    <lastmod>{d}</lastmod>", "  </url>"]
