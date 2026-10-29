@@ -14,7 +14,13 @@ def k():
 
 
 def test_contains_key_facts(k):
-    assert "$41B" in k and "30-person" in k and "950K+" in k
+    assert "$41B" in k and "30-person" in k and "−2.47%" in k
+
+
+def test_leaves_out_confidential_verizon_counts(k):
+    # Rick, Oct 29: product-level Verizon usage figures are proprietary and stay off public pages
+    for figure in ["700K", "2.4M", "2M+", "950K", "1.2M", "5.7M", "5.74M"]:
+        assert figure not in k, figure
 
 
 def test_has_case_urls(k):
