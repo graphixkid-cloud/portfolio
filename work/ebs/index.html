@@ -70,6 +70,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<script>
+  // Scroll motion (assets/js/motion.js) starts the hero hidden so it can fade in without a flash.
+  // Skipped for "reduce motion"; released after 2.5s if the motion script never arrives.
+  if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    document.documentElement.classList.add('motion');
+    setTimeout(function () { if (!window.__motion) document.documentElement.classList.remove('motion'); }, 2500);
+  }
+</script>
 <style>
 /* Layout: one editorial column (max 1180px). Dark hero, light body, case studies as numbered chapters with text left / artifacts right. */
 :root{
@@ -271,6 +279,10 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 @media (max-width:440px){.brand b{font-size:.95rem;letter-spacing:.05em}.brand>span>span{display:none}}
 .site-footer{background:var(--night);color:var(--night-ink-2);font-size:.85rem;border-top:1px solid rgba(238,241,244,.12)}
 .site-footer .wrap{padding-block:22px}
+/* Scroll motion (assets/js/motion.js) */
+html.motion .hero .wrap>*{opacity:0}
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+@media print{.m-anim{opacity:1!important;visibility:visible!important;transform:none!important}.scroll-progress{display:none}}
 </style>
 <link rel="stylesheet" href="../../assets/css/ask.css">
 </head>
@@ -383,6 +395,9 @@ section.block{padding-block:clamp(64px,9vw,112px)}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 })();
 </script>
+<script src="../../assets/js/vendor/gsap.min.js" defer></script>
+<script src="../../assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="../../assets/js/motion.js" defer></script>
 <!-- analytics -->
 <script>
   // Count visits only on the live site, not local files or previews.

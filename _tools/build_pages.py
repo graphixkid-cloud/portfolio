@@ -102,6 +102,7 @@ def main():
     contact = between(home, '<section class="block contact" id="contact"', "</section>")
     footer = between(home, '<footer class="site-footer">', "</footer>")
     scripts = between(home, "<script>\n(function(){", "<!-- /analytics -->")
+    head_js = between(home, "<script>\n  // Scroll motion", "</script>\n")
     person_name = "Rick Hollandsworth"
 
     articles = {c["slug"]: (ROOT / "_tools" / "cases" / f"{c['slug']}.html").read_text(encoding="utf-8") for c in CASES}
@@ -169,7 +170,7 @@ def main():
 <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
 {fonts}
-{style}
+{head_js}{style}
 <link rel="stylesheet" href="../../assets/css/ask.css">
 </head>
 <body>
@@ -191,7 +192,7 @@ def main():
 
 {footer}
 
-{scripts}
+{relink(scripts)}
 {ask_tag("../../", slug)}
 </body>
 </html>
@@ -243,7 +244,7 @@ def main():
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 {fonts}
-{style}
+{head_js}{style}
 <link rel="stylesheet" href="../assets/css/ask.css">
 </head>
 <body>
@@ -264,7 +265,7 @@ def main():
 
 {footer}
 
-{scripts}
+{relink(scripts, "../")}
 {ask_tag("../", slug)}
 </body>
 </html>
