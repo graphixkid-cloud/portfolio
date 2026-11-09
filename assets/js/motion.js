@@ -6,6 +6,10 @@
  *  - Only transform and opacity are animated (no layout properties), so nothing reflows.
  *  - Native scrolling is never hijacked: no smooth-scroll library, no pinning.
  *  - Reveals play once and stay revealed; scrolling back up never hides text again.
+ *  - Hidden-until-revealed content uses opacity only (never visibility:hidden), so it stays in the
+ *    accessibility tree and find-in-page; keyboard focus inside an unrevealed block reveals it at once.
+ *  - ScrollTrigger.refresh() is never run while the page is scrolling: it restores the old scroll
+ *    position and would cancel a smooth in-page jump (that was the Work/About/Contact nav bug).
  *
  * The <head> adds the "motion" class to <html> so the hero can start hidden without a flash.
  * This file removes that class once it has taken over (or straight away if it can't run).
@@ -19,7 +23,19 @@
 
   var gsap = window.gsap, ST = window.ScrollTrigger;
   gsap.registerPlugin(ST);
+  // ScrollTrigger re-measures on "load" by itself, which would cancel a smooth jump the visitor
+  // started before the page finished loading. Leave "load" out; refresh() below handles it safely.
+  ST.config({ autoRefreshEvents: 'visibilitychange,DOMContentLoaded,resize' });
   window.__motion = 'on';
+
+  // If anything below throws, show everything rather than leave content faded out.
+  try { setup(); } catch (err) {
+    gsap.set('.m-anim', { clearProps: 'transform,opacity,visibility' });
+    release();
+    if (window.console) console.warn('motion.js disabled:', err);
+  }
+
+  function setup() {
 
   var EASE = 'power3.out';
   var $ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
@@ -32,12 +48,12 @@
     if (!els.length) return;
     opts = opts || {};
     gsap.from(els, {
-      autoAlpha: 0,
+      opacity: 0,
       y: opts.y == null ? 32 : opts.y,
       duration: opts.duration || 0.9,
       ease: EASE,
       stagger: opts.stagger == null ? 0.08 : opts.stagger,
-      clearProps: 'transform,opacity,visibility',
+      clearProps: 'transform,opacity',
       scrollTrigger: { trigger: opts.trigger || els[0], start: opts.start || 'top 85%', once: true }
     });
   }
@@ -59,8 +75,8 @@
     var stats = mark($('.stat', hero));
     root.classList.remove('motion'); // hand the hidden start state from CSS to GSAP
     var intro = gsap.timeline({ defaults: { ease: EASE } });
-    intro.from(parts, { autoAlpha: 0, y: 28, duration: 1, stagger: 0.1, clearProps: 'transform,opacity,visibility' })
-         .from(stats, { autoAlpha: 0, y: 20, duration: 0.8, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, '-=0.55');
+    intro.from(parts, { opacity: 0, y: 28, duration: 1, stagger: 0.1, clearProps: 'transform,opacity' })
+         .from(stats, { opacity: 0, y: 20, duration: 0.8, stagger: 0.08, clearProps: 'transform,opacity' }, '-=0.55');
 
     // Count the headline numbers up ("$41B", "20M", "30", "5×"); screen readers get the final value.
     stats.forEach(function (stat, i) {
@@ -78,7 +94,7 @@
 
     // As the hero scrolls away its content drifts up and dims a little (scrubbed to the scrollbar).
     gsap.to(hero, {
-      y: -60, autoAlpha: 0.35, ease: 'none',
+      y: -60, opacity: 0.35, ease: 'none',
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
     });
   } else {
@@ -131,17 +147,17 @@
     d.addEventListener('toggle', function () {
       if (d.open) {
         var inner = mark($('.rec', d));
-        gsap.fromTo(inner, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: EASE, stagger: 0.05, clearProps: 'transform,opacity,visibility' });
+        gsap.fromTo(inner, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: EASE, stagger: 0.05, clearProps: 'transform,opacity' });
       }
-      ST.refresh(); // the page got taller or shorter; re-measure everything below
+      refresh(); // the page got taller or shorter; re-measure everything below
     });
   });
   if (recs.length) {
-    gsap.set(recs, { autoAlpha: 0, y: 36 });
+    gsap.set(recs, { opacity: 0, y: 36 });
     ST.batch(recs, {
       start: 'top 90%', once: true,
       onEnter: function (batch) {
-        gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.1, clearProps: 'transform,opacity,visibility' });
+        gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.1, clearProps: 'transform,opacity' });
       }
     });
   }
@@ -162,9 +178,40 @@
   }
 
   // Images and fonts change page height after load; re-measure so triggers fire in the right place.
-  window.addEventListener('load', function () { ST.refresh(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
+  window.addEventListener('load', refresh);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 
-  // Jumping to an in-page link (e.g. "See the work") shows that section's content immediately.
-  window.addEventListener('hashchange', function () { ST.refresh(); });
+  // Keyboard users: tabbing into a block that hasn't scrolled into its reveal yet shows it at once,
+  // so a focused link is never invisible.
+  document.addEventListener('focusin', function (e) {
+    for (var el = e.target; el && el !== document.body; el = el.parentElement) {
+      if (!el.classList || !el.classList.contains('m-anim')) continue;
+      gsap.getTweensOf(el).forEach(function (t) { if (!t.scrollTrigger || !t.scrollTrigger.vars.scrub) t.progress(1); });
+      if (parseFloat(getComputedStyle(el).opacity) < 1 && !el.closest('.hero')) gsap.set(el, { clearProps: 'transform,opacity' });
+    }
+  });
+  }
+
+  // Re-measure, but never mid-scroll: refresh() puts the scroll position back where it started,
+  // which cancels a smooth jump to #work, #about or #contact. Wait until scrolling settles.
+  var lastScroll = 0;
+  window.addEventListener('scroll', function () { lastScroll = Date.now(); }, { passive: true });
+  function refresh() {
+    if (Date.now() - lastScroll < 200) { setTimeout(refresh, 250); return; }
+    ST.refresh();
+    realign();
+  }
+
+  // Opened from a direct link (rickhollandsworth.com/#about): fonts and images arriving can shift the
+  // section after the browser has jumped to it. Until the visitor scrolls, clicks or types themselves,
+  // keep the linked section lined up under the header.
+  var userMoved = false;
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (type) {
+    window.addEventListener(type, function () { userMoved = true; }, { passive: true, once: true });
+  });
+  function realign() {
+    if (userMoved || location.hash.length < 2) return;
+    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
 })();

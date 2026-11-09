@@ -135,7 +135,7 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 .case{display:grid;gap:clamp(32px,4vw,48px);padding-bottom:clamp(56px,8vw,96px);margin-bottom:clamp(56px,8vw,96px);border-bottom:1px solid var(--rule)}
 .case:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
 .case-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center}
-.case-num{font:700 .9rem/1 var(--font-display);letter-spacing:.14em;color:var(--ink-2)}
+.case-num{font:700 .9rem/1 var(--font-display);letter-spacing:.06em;color:var(--ink-2)}
 .case h3{font-size:clamp(2rem,3.6vw,2.9rem);margin-top:10px}
 .case .thesis{margin-top:14px;font:500 var(--step-1)/1.4 var(--font-display);letter-spacing:.01em;color:var(--ink-2)}
 .case-hero .shot{position:relative;aspect-ratio:16/9}
@@ -252,6 +252,12 @@ section.block{padding-block:clamp(64px,9vw,112px)}
 @media (max-width:440px){.brand b{font-size:.95rem;letter-spacing:.05em}.brand>span>span{display:none}}
 .site-footer{background:var(--night);color:var(--night-ink-2);font-size:.85rem;border-top:1px solid rgba(238,241,244,.12)}
 .site-footer .wrap{padding-block:22px}
+/* Pause/play for looping demo videos (assets/js/media.js) */
+.has-vctl{position:relative}
+.vctl{position:absolute;right:12px;bottom:12px;z-index:2;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid rgba(238,241,244,.35);border-radius:50%;background:rgba(16,20,24,.72);color:#fff;cursor:pointer;transition:background .15s ease}
+.vctl svg{fill:currentColor}
+.vctl:hover{background:rgba(16,20,24,.9)}
+.vctl:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px var(--accent);border-radius:50%}
 /* Scroll motion (assets/js/motion.js) */
 html.motion .hero .wrap>*{opacity:0}
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
@@ -354,6 +360,7 @@ html.motion .hero .wrap>*{opacity:0}
 <script src="../assets/js/vendor/gsap.min.js" defer></script>
 <script src="../assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="../assets/js/motion.js" defer></script>
+<script src="../assets/js/media.js" defer></script>
 <!-- analytics -->
 <script>
   // Count visits only on the live site, not local files or previews.
