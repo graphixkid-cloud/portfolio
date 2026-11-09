@@ -1,0 +1,170 @@
+/* Scroll motion for rickhollandsworth.com (GSAP + ScrollTrigger, self-hosted in assets/js/vendor/).
+ *
+ * Rules this file keeps:
+ *  - Content never depends on it. With JavaScript off, GSAP missing, or "reduce motion" turned on,
+ *    every page is the plain, fully visible layout.
+ *  - Only transform and opacity are animated (no layout properties), so nothing reflows.
+ *  - Native scrolling is never hijacked: no smooth-scroll library, no pinning.
+ *  - Reveals play once and stay revealed; scrolling back up never hides text again.
+ *
+ * The <head> adds the "motion" class to <html> so the hero can start hidden without a flash.
+ * This file removes that class once it has taken over (or straight away if it can't run).
+ */
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function release() { root.classList.remove('motion'); window.__motion = 'off'; }
+
+  if (reduce || !window.gsap || !window.ScrollTrigger) { release(); return; }
+
+  var gsap = window.gsap, ST = window.ScrollTrigger;
+  gsap.registerPlugin(ST);
+  window.__motion = 'on';
+
+  var EASE = 'power3.out';
+  var $ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+  // Mark everything we touch so print styles can force it visible.
+  function mark(els) { els.forEach(function (el) { el.classList.add('m-anim'); }); return els; }
+
+  /* Reveal a group of elements when the first of them scrolls into view. */
+  function reveal(els, opts) {
+    els = mark(els.filter(Boolean));
+    if (!els.length) return;
+    opts = opts || {};
+    gsap.from(els, {
+      autoAlpha: 0,
+      y: opts.y == null ? 32 : opts.y,
+      duration: opts.duration || 0.9,
+      ease: EASE,
+      stagger: opts.stagger == null ? 0.08 : opts.stagger,
+      clearProps: 'transform,opacity,visibility',
+      scrollTrigger: { trigger: opts.trigger || els[0], start: opts.start || 'top 85%', once: true }
+    });
+  }
+
+  /* Image eases from slightly zoomed to rest as it travels through the viewport. */
+  function settle(img, from) {
+    if (!img) return;
+    mark([img]);
+    gsap.fromTo(img, { scale: from || 1.08 }, {
+      scale: 1, ease: 'none',
+      scrollTrigger: { trigger: img.closest('.shot') || img, start: 'top bottom', end: 'center 45%', scrub: 0.6 }
+    });
+  }
+
+  /* ---------- Hero (home page) ---------- */
+  var hero = document.querySelector('.hero .wrap');
+  if (hero) {
+    var parts = mark([hero.querySelector('.label'), hero.querySelector('h1'), hero.querySelector('.lede'), hero.querySelector('.hero-actions')].filter(Boolean));
+    var stats = mark($('.stat', hero));
+    root.classList.remove('motion'); // hand the hidden start state from CSS to GSAP
+    var intro = gsap.timeline({ defaults: { ease: EASE } });
+    intro.from(parts, { autoAlpha: 0, y: 28, duration: 1, stagger: 0.1, clearProps: 'transform,opacity,visibility' })
+         .from(stats, { autoAlpha: 0, y: 20, duration: 0.8, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, '-=0.55');
+
+    // Count the headline numbers up ("$41B", "20M", "30", "5×"); screen readers get the final value.
+    stats.forEach(function (stat, i) {
+      var b = stat.querySelector('b');
+      var m = b && b.textContent.match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
+      if (!m) return;
+      var end = parseFloat(m[2]), dec = (m[2].split('.')[1] || '').length, n = { v: 0 };
+      b.setAttribute('aria-label', b.textContent);
+      gsap.to(n, {
+        v: end, duration: 1.4, ease: 'power2.out', delay: 0.55 + i * 0.08,
+        onUpdate: function () { b.textContent = m[1] + n.v.toFixed(dec) + m[3]; },
+        onComplete: function () { b.textContent = m[1] + m[2] + m[3]; }
+      });
+    });
+
+    // As the hero scrolls away its content drifts up and dims a little (scrubbed to the scrollbar).
+    gsap.to(hero, {
+      y: -60, autoAlpha: 0.35, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
+    });
+  } else {
+    root.classList.remove('motion');
+  }
+
+  /* ---------- Client logos ---------- */
+  reveal($('.clients .label, .clients img'), { y: 14, stagger: 0.06, start: 'top 92%' });
+
+  /* ---------- Section heads ---------- */
+  $('.section-head').forEach(function (head) { reveal($(':scope > *', head), { y: 24, stagger: 0.1 }); });
+
+  /* ---------- Case studies (home cards and case pages) ---------- */
+  $('.case').forEach(function (cs) {
+    var summary = cs.querySelector('.case-summary');
+    if (summary) reveal($(':scope > *', summary), { y: 28, stagger: 0.09 });
+    var heroShot = cs.querySelector('.case-hero .shot');
+    if (heroShot) {
+      reveal([heroShot], { y: 48, duration: 1.1, start: 'top 90%' });
+      settle(heroShot.querySelector('img, video'), 1.1);
+    }
+    reveal($('.meta > div', cs), { y: 20, stagger: 0.07 });
+    $('.case-block', cs).forEach(function (block) {
+      var items = $('.decisions > li', block);
+      reveal($(':scope > h4, :scope > p', block), { y: 24 });
+      if (items.length) reveal(items, { y: 30, stagger: 0.07, trigger: items[0] });
+    });
+    $('.case-strip .shot', cs).forEach(function (shot) {
+      reveal([shot], { y: 40, start: 'top 90%' });
+      settle(shot.querySelector('img, video'), 1.06);
+    });
+    var links = cs.querySelector('.case-links');
+    if (links) reveal([links], { y: 16 });
+  });
+
+  /* ---------- Earlier work, about, recommendations, contact ---------- */
+  reveal($('.earlier > div, .earlier li'), { y: 20, stagger: 0.06 });
+
+  var portrait = document.querySelector('.about > img');
+  if (portrait) {
+    reveal([portrait], { y: 40, duration: 1.1 });
+    reveal($('.about .bio > p'), { y: 24, stagger: 0.1, trigger: portrait });
+    reveal($('.about .facts > div'), { y: 20, stagger: 0.08 });
+  }
+
+  // Recommendations come in a row at a time as they reach the viewport.
+  // The ones inside "Show more" (<details>) fade in when it opens instead.
+  var recs = mark($('.rec').filter(function (r) { return !r.closest('details'); }));
+  $('details.recs-expand').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) {
+        var inner = mark($('.rec', d));
+        gsap.fromTo(inner, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: EASE, stagger: 0.05, clearProps: 'transform,opacity,visibility' });
+      }
+      ST.refresh(); // the page got taller or shorter; re-measure everything below
+    });
+  });
+  if (recs.length) {
+    gsap.set(recs, { autoAlpha: 0, y: 36 });
+    ST.batch(recs, {
+      start: 'top 90%', once: true,
+      onEnter: function (batch) {
+        gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.1, clearProps: 'transform,opacity,visibility' });
+      }
+    });
+  }
+
+  var contact = document.querySelector('.contact .wrap');
+  if (contact) reveal($(':scope > h2, :scope > .sub, :scope > dl > div', contact), { y: 30, stagger: 0.08 });
+
+  /* ---------- Reading progress (case-study and resource pages) ---------- */
+  if (document.querySelector('main article.case') && !document.querySelector('.hero')) {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    gsap.fromTo(bar, { scaleX: 0 }, {
+      scaleX: 1, ease: 'none',
+      scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 }
+    });
+  }
+
+  // Images and fonts change page height after load; re-measure so triggers fire in the right place.
+  window.addEventListener('load', function () { ST.refresh(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
+
+  // Jumping to an in-page link (e.g. "See the work") shows that section's content immediately.
+  window.addEventListener('hashchange', function () { ST.refresh(); });
+})();
