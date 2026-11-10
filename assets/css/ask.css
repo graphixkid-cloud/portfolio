@@ -121,6 +121,9 @@
 /* phone: full-width bottom sheet */
 @media (max-width:600px){
   .ask-launcher{right:16px;bottom:16px}
+  /* phones: always the round icon button; the "Ask about Rick" pill covered the hero buttons */
+  .ask-launcher--label{padding:0 15px}
+  .ask-launcher--label .ask-launcher-text{display:none}
   .ask-panel{left:0;right:0;bottom:0;width:100%;height:min(780px,calc(100% - 64px));border-radius:18px 18px 0 0}
   .ask-root.ask-open .ask-launcher{display:none}
   .ask-footer{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
