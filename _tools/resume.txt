@@ -7,7 +7,7 @@ Principal Product Designer with 15+ years of expertise driving end-to-end user j
 
 Key career achievements
 - Consumer product scale (Verizon): directed UX strategy for a $1.25B consumer portfolio (including 5G Home Internet, Cloud, Family, Protect, Gizmo), reaching over 20M subscribers.
-- FinTech innovation (EBS BrokerTec): architected award-winning trading interfaces that processed $100B+ in daily trades and accelerated Spot FX volume by 30%.
+- FinTech innovation (EBS BrokerTec): architected award-winning trading interfaces for a platform that averaged roughly $75B–$97B a day, with a $200B day after the Brexit vote, and accelerated Spot FX volume by 30%.
 - Asset and revenue growth (Bank of New York / Pershing): led design for flagship brokerage platforms generating $330M annually and managing $30B in assets.
 - Global consolidation (JPMorgan Chase): unified legacy systems into a turnkey single sign-on platform for bankers managing $25M+ accounts, elevating global rankings.
 
@@ -31,7 +31,7 @@ Titles: Principal Experience Designer (May 2021 – Aug 2026); Lead Experience D
 EBS BrokerTec (now CME Group) — March 2012 to March 2017 — Parsippany, NJ
 Title: Senior User Experience Designer
 - Designed the new FX Forwards trading interface for EBS Direct, which did about $10B a day by 2017 and set a $41.8B single-day record in 2024; EBS won Best Broker for Spot FX five consecutive years.
-- Supported a 30% acceleration in Spot FX trading through iceberg order designs on a platform averaging $100B in daily volume.
+- Supported a 30% acceleration in Spot FX trading through iceberg order designs on a platform averaging roughly $75B–$97B in daily volume.
 
 UI/UX Consulting (KPMG, Citigroup, Medco) — May 2008 to February 2012
 Title: Senior Design Consultant
