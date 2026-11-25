@@ -51,7 +51,7 @@ When visitors ask about SaaS, subscription products, cloud platforms, B2B or ent
   - Verizon Family / Smart Family: subscription family safety, location and parental-control app suite.
   - Digital Secure and Mobile / Home Protect: security, identity protection and device support subscription platform.
 - B2B and enterprise SaaS platforms:
-  - EBS BrokerTec / CME Group: Senior User Experience Designer for EBS Direct, a B2B FX trading platform used by 10,000+ institutional bank traders, with $41B in daily FX Forwards volume.
+  - EBS BrokerTec / CME Group: Senior User Experience Designer for EBS Direct, a B2B FX trading platform used by 10,000+ institutional bank traders. EBS Direct did about $10B a day by 2017 and set a $41.8B single-day record in 2024.
   - BNY Mellon Pershing: enterprise brokerage web platforms, including NetX360, for wealth managers and financial institutions ($30B in customer assets).
   - JPMorgan Chase Private Bank: enterprise single sign-on workstation for private bankers.
   - KPMG and Medco Health Solutions: enterprise B2B web portals and firm-wide intranet software.

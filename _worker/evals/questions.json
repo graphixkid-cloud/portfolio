@@ -2,8 +2,8 @@
  {
   "q": "What did Rick do at EBS?",
   "must_include_any": [
-   "$41B",
-   "41B",
+   "$41.8B",
+   "41.8B",
    "forwards",
    "Forwards"
   ],

@@ -78,7 +78,7 @@
     intro.from(parts, { opacity: 0, y: 28, duration: 1, stagger: 0.1, clearProps: 'transform,opacity' })
          .from(stats, { opacity: 0, y: 20, duration: 0.8, stagger: 0.08, clearProps: 'transform,opacity' }, '-=0.55');
 
-    // Count the headline numbers up ("$41B", "20M", "30", "5×"); screen readers get the final value.
+    // Count the headline numbers up ("$41.8B", "20M", "30", "5×"); screen readers get the final value.
     stats.forEach(function (stat, i) {
       var b = stat.querySelector('b');
       var m = b && b.textContent.match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);

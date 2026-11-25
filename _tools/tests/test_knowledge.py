@@ -14,7 +14,7 @@ def k():
 
 
 def test_contains_key_facts(k):
-    assert "$41B" in k and "30-person" in k and "−2.47%" in k
+    assert "$41.8B" in k and "30-person" in k and "−2.47%" in k
 
 
 def test_leaves_out_confidential_verizon_counts(k):
